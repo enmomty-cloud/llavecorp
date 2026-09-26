@@ -1,6 +1,6 @@
-# Spec de diseño — Tienda de llaveros "Canal de las 4" (marca nueva, venta al menudeo)
+# Spec de diseño — LlaveCorp, tienda de llaveros estilo "Canal de las 4" (venta al menudeo)
 
-**Versión:** 1.0 · **Fecha:** 2026-09-26 · **Estado:** en revisión
+**Versión:** 1.0 · **Fecha:** 2026-09-26 · **Estado:** aprobado por el dueño el 2026-09-26
 
 > Complementa y absorbe `spec_pagina_llaveros_marca_nueva.md` (instructivo NFC, v1.0 del 2026-09-25). Donde este documento contradiga al anterior, manda este documento. El instructivo se conserva completo como una zona del sitio (sección 7).
 
@@ -10,13 +10,15 @@
 
 | Tema | Decisión |
 |---|---|
-| Marca, dominio, WhatsApp | Marcadores `{{MARCA}}`, `{{DOMINIO}}`, `{{WHATSAPP}}` centralizados en un archivo de configuración. Se llenan cuando existan. |
+| Marca y dominio | **LlaveCorp**, dominio `llavecorp.com` (comprar también `.mx`). El nombre alude a una corporación de cápsulas de anime solo por concepto: el logo y el arte son originales y no copian ningún logotipo existente. |
+| WhatsApp | Marcador `{{WHATSAPP}}` en configuración hasta que el dueño lo entregue. |
+| Mascota y estilo | Mascota **Llavi**. El estilo visual se llama "Canal de las 4". Lema: "Llaveros con poder". |
 | Anime | Solo **estilo** anime original (chibis, tropos visuales, íconos genéricos). Ningún personaje, nombre, logo ni frase registrada de anime, videojuegos o TV. Aplica a todo el sitio, incluyendo fotos de producto que se suban. |
 | Cobro | Solo por WhatsApp, pago en efectivo o transferencia. Sin carrito, sin pasarela, sin cuentas de usuario. |
 | Precios | Cada diseño tiene su propio precio (varían tamaño y largo). Precio mínimo de catálogo: **$60 MXN**. La tienda comunica "desde $60". |
 | Personalización | Sin personalizador en línea. Modelo "Editable / Colores / Diseño nuevo" (sección 3). El dueño edita y manda foto de preview por WhatsApp. |
-| URL del chip | `https://{{DOMINIO}}/activa?c=1`. QR trasero: `https://{{DOMINIO}}/activa?q=1`. La raíz `/` es la tienda. |
-| Hosting | Sitio estático. El VPS es de Tu Día; este sitio puede vivir ahí (nginx, carpeta `dist/`) o gratis en Cloudflare Pages o Vercel. El build debe funcionar en ambos sin cambios. |
+| URL del chip | `https://llavecorp.com/activa?c=1`. QR trasero: `https://llavecorp.com/activa?q=1`. La raíz `/` es la tienda. |
+| Hosting | Sitio estático. El VPS es de Tu Día; este sitio puede vivir ahí (nginx, carpeta `dist/`, dominio `llavecorp.com`) o gratis en Cloudflare Pages o Vercel. El build debe funcionar en ambos sin cambios. |
 | Fotos | Placeholders ilustrados (pixel/anime) hasta que llegue la impresora 3D. Cada producto tiene un campo `imagen` que se llena después sin tocar código. |
 | Stack | Astro (salida estática), CSS propio sin framework, JavaScript mínimo como mejora progresiva. |
 
@@ -68,6 +70,17 @@ Tarjeta física de sellos: compra cinco llaveros y el sexto es gratis. La págin
 
 ### 2.6 Mayoreo / "Vende con nosotros"
 Sección para amigos y familiares que quieran revender. Muestra rangos de cantidad y precio por pieza desde un archivo de datos, y un botón de WhatsApp con mensaje prellenado. Sin formulario.
+
+---
+
+## 2.7 Logo y llavero de presentación
+
+El logo de LlaveCorp se diseña para verse en pantalla **y** para imprimirse en 3D como llavero con chip, que el dueño trae en sus llaves y acerca al celular de quien pregunte.
+
+- **Concepto:** cápsula horizontal con una llave pixel dentro y la palabra LLAVECORP en tipografía pixel debajo. La misma cápsula, abierta a la mitad, es la animación de la Cápsula Sorpresa.
+- **Reglas de impresión:** tipografía pixel; ninguna forma menor a 2 mm de ancho; máximo tres colores (fondo, letra, acento); proporción pensada para unos 45 mm de largo con espacio para una etiqueta NFC de 25 mm y la argolla en el extremo opuesto al chip.
+- **Entregables:** `public/logo/llavecorp.svg` (color, para web), `public/logo/llavecorp-mono.svg` (un color) y `public/logo/llavecorp-capas.svg` con una capa nombrada por color para extruir en el programa de la impresora.
+- **Producto:** "Llavero LlaveCorp" en la Saga Retro, con chip, marcado como `destacado`. Es la tarjeta de presentación de la marca.
 
 ---
 
@@ -157,8 +170,9 @@ Todo lo que cambia seguido vive en archivos de datos; agregar un producto, un us
 ### 6.1 `src/config/marca.json`
 ```json
 {
-  "marca": "{{MARCA}}",
-  "dominio": "{{DOMINIO}}",
+  "marca": "LlaveCorp",
+  "dominio": "llavecorp.com",
+  "lema": "Llaveros con poder",
   "whatsapp": "{{WHATSAPP}}",
   "mascota": "Llavi",
   "ciudad": "Monterrey",
@@ -219,11 +233,11 @@ Igual que la sección 4 del spec anterior: `slug`, `titulo`, `icono`, `descripci
 
 ### 6.7 Mensajes de WhatsApp
 Se generan con una función única `waLink(tipo, datos)` que arma `https://wa.me/{{WHATSAPP}}?text=...` codificado. Plantillas:
-- **Producto:** "Hola, vi {{MARCA}} y quiero el llavero *{nombre}* ({básico | con NFC})."
+- **Producto:** "Hola, vi LlaveCorp y quiero el llavero *{nombre}* ({básico | con NFC})."
 - **Producto editable:** la anterior más "Texto/nombre: ___ · Colores: ___".
 - **Diseño nuevo:** "Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___".
 - **Cápsula:** "Hola, quiero una cápsula sorpresa."
-- **Mayoreo:** "Hola, quiero vender llaveros de {{MARCA}}. Cantidad aprox: ___".
+- **Mayoreo:** "Hola, quiero vender llaveros de LlaveCorp. Cantidad aprox: ___".
 - **Avísame:** "Hola, avísame cuando anden por ___".
 - **Instructivo:** "Hola, vi el instructivo de mi llavero y quiero..."
 
@@ -258,7 +272,7 @@ Se implementa completo según las secciones 1, 3, 4, 5 y 6 del spec anterior, co
 ## 9. Hosting y despliegue
 
 - `npm run build` genera `dist/`.
-- **VPS de Tu Día:** se documenta un bloque de nginx que sirve `dist/` en `{{DOMINIO}}` con caché de estáticos y redirección a HTTPS. Sin proceso Node en producción.
+- **VPS de Tu Día:** se documenta un bloque de nginx que sirve `dist/` en `llavecorp.com` con caché de estáticos y redirección a HTTPS. Sin proceso Node en producción.
 - **Cloudflare Pages / Vercel:** se documenta el comando de build y la carpeta de salida. Ambos gratis para este volumen.
 - No hay redirecciones en v1, así que no se necesitan `_redirects` ni `vercel.json`.
 - README con: cómo agregar un producto, una saga, un uso, un tianguis; cómo subir fotos; cómo cambiar precios; cómo desplegar.
@@ -269,7 +283,7 @@ Se implementa completo según las secciones 1, 3, 4, 5 y 6 del spec anterior, co
 
 Cada etapa termina con el sitio funcionando y revisable en el navegador.
 
-1. **Base y tienda:** proyecto Astro, configuración y datos, sistema de diseño Canal de las 4 (tokens, tipografía, ventana 90s, botón START, tarjetas), mascota en SVG, hero, "Con poder NFC", catálogo por sagas, fichas de producto, páginas de saga, "Hazlo tuyo", "¿Dónde estamos?", pie, botón flotante de WhatsApp.
+1. **Base y tienda:** proyecto Astro, configuración y datos, sistema de diseño Canal de las 4 (tokens, tipografía, ventana 90s, botón START, tarjetas), logo en SVG (web, mono y por capas) y mascota en SVG, hero, "Con poder NFC", catálogo por sagas, fichas de producto, páginas de saga, "Hazlo tuyo", "¿Dónde estamos?", pie, botón flotante de WhatsApp.
 2. **Instructivo NFC:** `/activa` y `/activa/{slug}` con los once usos, barra de corazones, POWER UP, consejos, guardar partida.
 3. **Conversión:** cápsula sorpresa con animación, guía de regalos, tarjeta de coleccionista, `/mayoreo`, `/donde`, detrás del taller.
 4. **Extras y salida:** modo noche arcade con botón, sonidos 8-bit, easter eggs (código Konami, cinco toques a la mascota, modo VHS), analítica opcional, Open Graph, README de operación y despliegue, guía de nginx.
@@ -282,7 +296,7 @@ Cada etapa termina con el sitio funcionando y revisable en el navegador.
 - Cualquier producto se puede pedir por WhatsApp en un toque, con el mensaje correcto ya escrito.
 - Un producto editable muestra sus reglas de personalización sin ambigüedad: qué se puede cambiar, cuántos colores tiene, y que un diseño nuevo se cotiza.
 - Agregar producto, saga, uso o tianguis requiere solo editar un archivo de datos y volver a construir.
-- Al acercar un llavero grabado con `https://{{DOMINIO}}/activa?c=1`, abre el instructivo y un usuario sin experiencia puede grabar su Wi-Fi o su WhatsApp siguiendo solo el tutorial.
+- Al acercar un llavero grabado con `https://llavecorp.com/activa?c=1`, abre el instructivo y un usuario sin experiencia puede grabar su Wi-Fi o su WhatsApp siguiendo solo el tutorial.
 - Se ve bien en Android económico e iPhone; sin scroll horizontal; contraste AA en tema claro y noche arcade.
 - No aparece ningún personaje, logo, nombre ni frase registrada de terceros.
 - `npm run build` produce un `dist/` que se sirve tal cual en nginx, Cloudflare Pages o Vercel.
