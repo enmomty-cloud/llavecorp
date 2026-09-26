@@ -1,0 +1,5 @@
+[
+  { "dia": "sábado", "lugar": "Tianguis (por definir)", "zona": "Monterrey", "horario": "9:00 a 15:00", "activo": true, "nota": "Puesto con la bandera de LlaveCorp." },
+  { "dia": "domingo", "lugar": "Mercado (por definir)", "zona": "Monterrey", "horario": "10:00 a 16:00", "activo": true, "nota": "" },
+  { "dia": "miércoles", "lugar": "Ejemplo inactivo", "zona": "", "horario": "", "activo": false, "nota": "" }
+]

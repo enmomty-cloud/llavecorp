@@ -1,0 +1,7 @@
+[
+  { "slug": "retro", "nombre": "Saga Retro", "descripcion": "Para los que soplaban el cartucho.", "icono": "casete", "orden": 1 },
+  { "slug": "anime", "nombre": "Saga Anime", "descripcion": "Directo del canal de las 4 de la tarde.", "icono": "onigiri", "orden": 2 },
+  { "slug": "mascotas", "nombre": "Saga Mascotas", "descripcion": "Placa con poder para tu compañero.", "icono": "huella", "orden": 3 },
+  { "slug": "nombre", "nombre": "Saga Con Nombre", "descripcion": "Tu nombre, tus colores, tu llavero.", "icono": "etiqueta", "orden": 4 },
+  { "slug": "capsula", "nombre": "Cápsula Sorpresa", "descripcion": "No sabes cuál te toca. Esa es la gracia.", "icono": "capsula", "orden": 5 }
+]
