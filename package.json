@@ -9,7 +9,8 @@
     "test": "vitest run",
     "verificar": "astro build && vitest run",
     "og": "node scripts/generar-og.mjs",
-    "csp-hash": "node scripts/csp-hash.mjs"
+    "csp-hash": "node scripts/csp-hash.mjs",
+    "redes": "node scripts/generar-redes.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

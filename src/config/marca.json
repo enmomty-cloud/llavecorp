@@ -7,9 +7,9 @@
   "ciudad": "Monterrey",
   "precio_minimo": 60,
   "redes": {
-    "instagram": "",
+    "instagram": "https://instagram.com/llavecorp",
     "tiktok": "",
-    "facebook": ""
+    "facebook": "https://facebook.com/llavecorp"
   },
   "tu_dia_url": "",
   "analitica_token": "",
@@ -52,6 +52,7 @@
     "titulo": "Promoción de lanzamiento",
     "sellos_llavero": 5,
     "sellos_capsula": 10,
-    "nota": "Promoción de introducción. Cuentan solo los pedidos hechos desde esta página por WhatsApp; llevo la cuenta con tu número. Puede terminar en cualquier momento sin previo aviso."
+    "nota": "Promoción de introducción. Cuentan solo los pedidos hechos desde esta página por WhatsApp; llevo la cuenta con tu número. Puede terminar en cualquier momento sin previo aviso.",
+    "requisito": "Para canjear cualquiera de los dos premios, muéstrame por WhatsApp una captura de que sigues a LlaveCorp en Instagram y otra de Facebook."
   }
 }

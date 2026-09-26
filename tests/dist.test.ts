@@ -65,6 +65,7 @@ describe.skipIf(!hayDist)('etapa 3: conversión', () => {
     for (const id of ['vende', 'taller', 'capsula', 'coleccionista']) expect(html).not.toContain(`id="${id}"`);
     expect(html).toContain('Sello 5: llavero con tu nombre');
     expect(html).toContain('pedidos hechos desde esta página');
+    expect(html).toContain('captura de que sigues');
     expect(html).toContain('Sello 10: abre la cápsula');
     expect(html).toContain('sin previo aviso');
     expect(html).not.toContain('Quiero una cápsula');

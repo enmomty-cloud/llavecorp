@@ -23,6 +23,7 @@ npm test             # pruebas de datos y enlaces
 npm run verificar    # build + pruebas (úsalo antes de subir)
 npm run og           # regenera la imagen de Open Graph (public/og/default.png)
 npm run csp-hash     # hash del script inline del tema, para la CSP de deploy/nginx.conf
+npm run redes        # regenera las imágenes de Instagram y Facebook en marketing/redes/
 ```
 
 Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qué regla rompió (precio bajo el mínimo, más de 4 colores, saga inexistente, slug repetido).
@@ -38,7 +39,7 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 | `tu_dia_url` | Enlace a Tu Día para el pie. Vacío = no aparece. |
 | `analitica_token` | Token de Cloudflare Web Analytics. Vacío = sin analítica. |
 | `mascota`, `ciudad`, `lema` | Textos que aparecen en varias partes. |
-| `promocion` | La promo de sellos. `activa: false` quita la sección entera; `sellos_llavero` y `sellos_capsula` son los números de compra con premio; `nota` es la letra chica. |
+| `promocion` | La promo de sellos. `activa: false` quita la sección entera; `sellos_llavero` y `sellos_capsula` son los números de compra con premio; `nota` es la letra chica; `requisito` es lo que piden para canjear (capturas de seguir en redes). |
 
 ## Cómo agregar cosas (solo editas JSON y vuelves a construir)
 
@@ -121,6 +122,10 @@ Cada push a `master` corre `.github/workflows/pages.yml`: construye, prueba y pu
 ## Fuentes
 
 Press Start 2P (títulos y botones) y Pixelify Sans (texto) están en `public/fonts/` (woff2, subconjunto latín, licencia OFL). No se carga nada de Google.
+
+## Redes sociales
+
+El kit de imágenes, textos y la guía para promocionar está en `marketing/redes/` (ver `textos.md`). Se regenera con `npm run redes`.
 
 ## Estructura
 
