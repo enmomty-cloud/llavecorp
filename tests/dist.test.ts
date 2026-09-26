@@ -61,7 +61,8 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
 describe.skipIf(!hayDist)('etapa 3: conversión', () => {
   it('inicio tiene la promoción y regalos, sin taller ni mayoreo ni cápsula a la venta', () => {
     const html = leer('index.html');
-    for (const id of ['promo', 'regalos']) expect(html).toContain(`id="${id}"`);
+    for (const id of ['promo', 'regalos', 'entregas']) expect(html).toContain(`id="${id}"`);
+    expect(html).toContain('Soriana Colosio');
     for (const id of ['vende', 'taller', 'capsula', 'coleccionista']) expect(html).not.toContain(`id="${id}"`);
     expect(html).toContain('Sello 5: llavero con tu nombre');
     expect(html).toContain('pedidos hechos desde esta página');
@@ -70,8 +71,9 @@ describe.skipIf(!hayDist)('etapa 3: conversión', () => {
     expect(html).toContain('sin previo aviso');
     expect(html).not.toContain('Quiero una cápsula');
   });
-  it('existe /donde y ya no existe /mayoreo', () => {
+  it('existe /donde con entregas y ya no existe /mayoreo', () => {
     expect(existsSync('dist/donde/index.html')).toBe(true);
+    expect(leer('donde/index.html')).toContain('Entregas y envíos');
     expect(existsSync('dist/mayoreo/index.html')).toBe(false);
   });
 });

@@ -1,0 +1,11 @@
+{
+  "zona": "Santa Catarina, N.L.",
+  "puntos": [
+    { "nombre": "Soriana Colosio", "nota": "En el estacionamiento, sin costo. Se acuerda día y hora por WhatsApp." },
+    { "nombre": "Cruz Roja Santa Catarina", "nota": "Afuera, sin costo. Se acuerda día y hora por WhatsApp." }
+  ],
+  "domicilio_gratis_desde": 5,
+  "envio_area_metropolitana": 80,
+  "nota_domicilio": "Con menos piezas, recoge en un punto de entrega o pregunta el costo a tu colonia.",
+  "nota_envio": "Fuera del área metropolitana de Monterrey va por paquetería y se cotiza. Los envíos se pagan por transferencia antes de salir; en punto de entrega pagas en efectivo o transferencia al recibir."
+}

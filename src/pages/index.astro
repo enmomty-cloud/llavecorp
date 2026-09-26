@@ -14,6 +14,7 @@ import Emote from '../components/Emote.astro';
 import DemoNfc from '../components/DemoNfc.astro';
 import Capsula from '../components/Capsula.astro';
 import TarjetaColeccionista from '../components/TarjetaColeccionista.astro';
+import Entregas from '../components/Entregas.astro';
 import marca from '../config/marca.json';
 import { destacados, getSagas, productosPorSaga, precioDesde, getProducto } from '../lib/catalogo';
 import { getTianguisActivos } from '../lib/tianguis';
@@ -119,6 +120,10 @@ const promo = marca.promocion;
       <BotonWhatsApp tipo="avisame" texto="Avísame cuando andes cerca" />
       <a class="btn btn--fantasma" href="/donde">Ver todos los puestos</a>
     </div>
+  </Seccion>
+
+  <Seccion id="entregas" titulo="Entregas y envíos" subtitulo="Recoges gratis, te lo llevo o te lo mando. Tú eliges al pedir.">
+    <Entregas />
   </Seccion>
 
   <Seccion id="regalos" titulo="Guía de regalos" subtitulo="Para cuando no sabes qué llevar y no quieres llegar con las manos vacías." fondo="halftone">

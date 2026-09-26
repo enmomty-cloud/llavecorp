@@ -76,6 +76,10 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 
 `dia` (lunes a domingo, con o sin acento), `lugar`, `zona`, `horario`, `activo` (false lo oculta sin borrarlo), `nota`.
 
+### Entregas y envíos: `src/data/entregas.json`
+
+`zona`, `puntos` (nombre y nota de cada punto de entrega gratis), `domicilio_gratis_desde` (piezas), `envio_area_metropolitana` (pesos), `nota_domicilio`, `nota_envio`. Se muestra en la portada y en `/donde`.
+
 ### Guía de regalos: `src/data/regalos.json`
 
 `para`, `texto`, `productos` (lista de slugs de productos).
@@ -123,6 +127,10 @@ Cada push a `master` corre `.github/workflows/pages.yml`: construye, prueba y pu
 
 Press Start 2P (títulos y botones) y Pixelify Sans (texto) están en `public/fonts/` (woff2, subconjunto latín, licencia OFL). No se carga nada de Google.
 
+## Registro de pedidos y sellos
+
+`marketing/registro-pedidos.xlsx` lleva la cuenta de la promoción: capturas cada pedido en la hoja Pedidos (WhatsApp, tipo, producto, entrega, origen) y la hoja Sellos calcula sola cuántos sellos lleva cada cliente, cuántos le faltan y si ya le toca premio. Se regenera con `python scripts/registro-pedidos.py` (necesita `pip install openpyxl`). También puedes subirlo a Google Sheets para tenerlo en el celular.
+
 ## Redes sociales
 
 El kit de imágenes, textos y la guía para promocionar está en `marketing/redes/` (ver `textos.md`). Se regenera con `npm run redes`.
@@ -131,7 +139,7 @@ El kit de imágenes, textos y la guía para promocionar está en `marketing/rede
 
 ```
 src/config/marca.json     marca, WhatsApp, colores, precio mínimo
-src/data/*.json           productos, sagas, usos, tianguis, regalos
+src/data/*.json           productos, sagas, usos, tianguis, regalos, entregas
 src/lib/*.ts              carga y validación de datos, enlaces de WhatsApp
 src/components/*.astro    ventana 90s, botones, tarjeta, logo, mascota, cápsula...
 src/pages/                rutas del sitio

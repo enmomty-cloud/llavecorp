@@ -4,15 +4,15 @@ import { waLink, mensaje } from '../src/lib/whatsapp';
 describe('mensaje', () => {
   it('producto básico', () => {
     expect(mensaje('producto', { nombre: 'Gato de la suerte', variante: 'basico' }))
-      .toBe('Hola, vi LlaveCorp y quiero el llavero *Gato de la suerte* (básico).');
+      .toBe('Hola, vi LlaveCorp y quiero el llavero *Gato de la suerte* (básico). Entrega: ___');
   });
   it('producto con NFC', () => {
     expect(mensaje('producto', { nombre: 'Casete', variante: 'nfc' }))
-      .toBe('Hola, vi LlaveCorp y quiero el llavero *Casete* (con NFC).');
+      .toBe('Hola, vi LlaveCorp y quiero el llavero *Casete* (con NFC). Entrega: ___');
   });
   it('editable agrega campos de texto y colores', () => {
     expect(mensaje('editable', { nombre: 'Placa', variante: 'basico' }))
-      .toBe('Hola, vi LlaveCorp y quiero el llavero *Placa* (básico). Texto/nombre: ___ · Colores: ___');
+      .toBe('Hola, vi LlaveCorp y quiero el llavero *Placa* (básico). Texto/nombre: ___ · Colores: ___ Entrega: ___');
   });
   it('diseño nuevo no lleva precio', () => {
     expect(mensaje('nuevo')).toBe('Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___');

@@ -1,0 +1,24 @@
+---
+// Política de entregas: puntos gratis, domicilio y envíos. Los datos viven en src/data/entregas.json.
+import Ventana from './Ventana.astro';
+import entregas from '../data/entregas.json';
+---
+<div class="grid grid--ancho">
+  <Ventana titulo={`Puntos de entrega gratis · ${entregas.zona}`} tono="verde">
+    <ul class="entregas-lista">
+      {entregas.puntos.map(p => <li><b>{p.nombre}.</b> {p.nota}</li>)}
+    </ul>
+  </Ventana>
+  <Ventana titulo="A domicilio" tono="amarillo">
+    <p><b>Gratis en {entregas.zona}</b> comprando {entregas.domicilio_gratis_desde} piezas o más.</p>
+    <p>{entregas.nota_domicilio}</p>
+  </Ventana>
+  <Ventana titulo="Otros municipios" tono="rojo">
+    <p><b>${entregas.envio_area_metropolitana}</b> de envío a los demás municipios del área metropolitana de Monterrey.</p>
+    <p>{entregas.nota_envio}</p>
+  </Ventana>
+</div>
+<style>
+  .entregas-lista { padding-left: 1.1rem; margin: 0; }
+  .entregas-lista li { margin-bottom: .5rem; }
+</style>

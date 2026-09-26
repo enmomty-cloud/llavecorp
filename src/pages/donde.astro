@@ -4,6 +4,7 @@ import Marca from '../components/Marca.astro';
 import Ventana from '../components/Ventana.astro';
 import BotonWhatsApp from '../components/BotonWhatsApp.astro';
 import Mascota from '../components/Mascota.astro';
+import Entregas from '../components/Entregas.astro';
 import { getTianguisActivos } from '../lib/tianguis';
 
 const puestos = getTianguisActivos();
@@ -35,6 +36,10 @@ const puestos = getTianguisActivos();
       <BotonWhatsApp tipo="avisame" texto="Avísame cuando andes cerca" />
       <a class="btn btn--fantasma" href="/#catalogo">Ver el catálogo</a>
     </div>
+  </section>
+  <section class="contenedor seccion" aria-labelledby="entregas-titulo">
+    <h2 id="entregas-titulo">Entregas y envíos</h2>
+    <Entregas />
   </section>
   <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" /></div>
 </Base>

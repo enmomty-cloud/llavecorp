@@ -9,9 +9,10 @@ const variante = (v?: Variante) => (v === 'nfc' ? 'con NFC' : 'básico');
 
 export function mensaje(tipo: TipoMensaje, datos: DatosMensaje = {}): string {
   const base = `Hola, vi ${marca.marca} y quiero el llavero *${datos.nombre ?? ''}* (${variante(datos.variante)}).`;
+  const entrega = ' Entrega: ___';
   switch (tipo) {
-    case 'producto': return base;
-    case 'editable': return `${base} Texto/nombre: ___ · Colores: ___`;
+    case 'producto': return base + entrega;
+    case 'editable': return `${base} Texto/nombre: ___ · Colores: ___` + entrega;
     case 'nuevo': return 'Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___';
     case 'avisame': return 'Hola, avísame cuando anden por ___';
     case 'instructivo': return 'Hola, vi el instructivo de mi llavero y quiero...';
