@@ -9,7 +9,7 @@
     <g fill="#1a1433"><rect x="10" y="30" width="14" height="160"/><rect x="176" y="30" width="14" height="160"/></g>
     <!-- etiqueta -->
     <rect x="40" y="36" width="120" height="120" fill="#1a1433"/>
-    <rect x="48" y="44" width="104" height="104" fill="#ff2e88"/>
+    <rect x="48" y="44" width="104" height="104" fill="#e4342b"/>
     <g fill="#fffaea"><rect x="60" y="60" width="16" height="16"/><rect x="84" y="60" width="16" height="16"/><rect x="108" y="60" width="16" height="16"/><rect x="60" y="92" width="80" height="12"/><rect x="60" y="116" width="48" height="12"/></g>
     <!-- muesca inferior -->
     <rect x="30" y="210" width="140" height="50" fill="#1a1433"/>

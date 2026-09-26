@@ -11,7 +11,7 @@
     <rect x="50" y="50" width="180" height="110" fill="#1a1433"/>
     <rect x="58" y="58" width="164" height="94" fill="#19c3d6"/>
     <g fill="#1a1433"><rect x="72" y="72" width="60" height="14"/><rect x="72" y="96" width="120" height="14"/><rect x="72" y="120" width="88" height="14"/></g>
-    <g fill="#ff2e88"><rect x="180" y="68" width="30" height="30"/></g>
+    <g fill="#e4342b"><rect x="180" y="68" width="30" height="30"/></g>
     <!-- muesca inferior -->
     <rect x="30" y="180" width="220" height="40" fill="#1a1433"/>
     <rect x="40" y="190" width="200" height="20" fill="#8e8a9c"/>

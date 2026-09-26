@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" shape-rendering="crispEdges" role="img" aria-label="LlaveCorp">
   <rect x="0" y="0" width="240" height="96" rx="48" fill="#1a1433"/>
-  <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z" fill="#ff2e88"/>
+  <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z" fill="#e4342b"/>
   <g fill="#fffaea">
     <!-- llave pixel: cabeza escalonada con ojo vertical, vástago grueso y dos dientes -->
     <rect x="36" y="24" width="24" height="12"/>

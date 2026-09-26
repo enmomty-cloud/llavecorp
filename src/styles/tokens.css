@@ -1,21 +1,21 @@
-/* Tokens del sistema "Canal de las 4": papel de historieta + acentos de impresión (magenta, cian, amarillo)
+/* Tokens del sistema "Canal de las 4": papel de historieta + acentos de videojuego (rojo, cian, amarillo)
    y un verde reservado para todo lo que tenga que ver con el poder NFC. */
 :root {
   color-scheme: light dark;
 
   --fuente-pixel: 'Press Start 2P', 'Courier New', monospace;
-  --fuente-texto: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fuente-texto: 'Pixelify Sans', 'Segoe UI', system-ui, sans-serif;
 
   --fondo: #fbf4dc;            /* papel de revista de historietas */
   --superficie: #fffaea;
   --tinta: #1a1433;            /* índigo profundo, no negro */
   --tinta-suave: #4d4666;
   --borde: #1a1433;
-  --magenta: #ff2e88;
+  --rojo: #e4342b;
   --cian: #19c3d6;
   --amarillo: #ffd23f;
   --verde-nfc: #28d17c;
-  --sobre-acento: #1a1433;     /* texto sobre magenta/cian/amarillo/verde */
+  --sobre-acento: #1a1433;     /* texto sobre rojo/cian/amarillo/verde */
   --sombra: 4px 4px 0 var(--tinta);
   --sombra-chica: 2px 2px 0 var(--tinta);
   --radio: 4px;
@@ -29,7 +29,7 @@
   --gb-2: #8bac0f;
   --gb-3: #9bbc0f;
 
-  accent-color: var(--magenta);
+  accent-color: var(--rojo);
 }
 
 /* Noche arcade: sigue la preferencia del sistema salvo que el visitante fije "claro". */
@@ -40,12 +40,12 @@
     --tinta: #f6f1ff;
     --tinta-suave: #bdb4d9;
     --borde: #f6f1ff;
-    --magenta: #ff5aa5;
+    --rojo: #ff5a4f;
     --cian: #45e3f2;
     --amarillo: #ffe066;
     --verde-nfc: #47f39a;
-    --sombra: 4px 4px 0 var(--magenta);
-    --sombra-chica: 2px 2px 0 var(--magenta);
+    --sombra: 4px 4px 0 var(--rojo);
+    --sombra-chica: 2px 2px 0 var(--rojo);
   }
 }
 :root[data-tema="noche"] {
@@ -55,12 +55,12 @@
   --tinta: #f6f1ff;
   --tinta-suave: #bdb4d9;
   --borde: #f6f1ff;
-  --magenta: #ff5aa5;
+  --rojo: #ff5a4f;
   --cian: #45e3f2;
   --amarillo: #ffe066;
   --verde-nfc: #47f39a;
-  --sombra: 4px 4px 0 var(--magenta);
-  --sombra-chica: 2px 2px 0 var(--magenta);
+  --sombra: 4px 4px 0 var(--rojo);
+  --sombra-chica: 2px 2px 0 var(--rojo);
 }
 :root[data-tema="claro"] {
   color-scheme: light;

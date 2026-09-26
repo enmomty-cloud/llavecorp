@@ -18,7 +18,6 @@ import marca from '../config/marca.json';
 import { destacados, getSagas, productosPorSaga, precioDesde, getProducto } from '../lib/catalogo';
 import { getTianguisActivos } from '../lib/tianguis';
 import regalos from '../data/regalos.json';
-import taller from '../data/taller.json';
 
 const fichas = destacados();
 const sagas = getSagas().filter(s => s.slug !== 'capsula');
@@ -26,7 +25,6 @@ const desde = precioDesde();
 const puestos = getTianguisActivos();
 const redes = Object.entries(marca.redes).filter(([, url]) => url);
 const capsula = getProducto('capsula-sorpresa');
-const fotosTaller = taller as { src: string; alt: string }[];
 ---
 <Base titulo={marca.lema} descripcion={`Llaveros impresos en 3D con chip NFC, estilo retro y anime, desde $${desde}. Pide por WhatsApp o búscanos en el tianguis.`}>
   <Marca slot="logo" />
@@ -112,7 +110,7 @@ const fotosTaller = taller as { src: string; alt: string }[];
         <p>Un diseño de dos colores sigue siendo de dos colores, solo que con los que tú escojas. Estos son los que tengo:</p>
         <Paleta />
       </Ventana>
-      <Ventana titulo="Diseño nuevo" tono="magenta">
+      <Ventana titulo="Diseño nuevo" tono="rojo">
         <p>Si quieres algo que no está en el catálogo, se cotiza aparte. El precio depende del tamaño y del número de colores.</p>
         <p>Mándame la idea o una referencia por WhatsApp y te digo cuánto y cuándo.</p>
         <BotonWhatsApp tipo="nuevo" texto="Cotizar diseño nuevo" />
@@ -144,7 +142,7 @@ const fotosTaller = taller as { src: string; alt: string }[];
   <Seccion id="regalos" titulo="Guía de regalos" subtitulo="Para cuando no sabes qué llevar y no quieres llegar con las manos vacías." fondo="halftone">
     <div class="grid grid--ancho">
       {regalos.map(r => (
-        <Ventana titulo={`Para ${r.para.toLowerCase()}`} tono="magenta">
+        <Ventana titulo={`Para ${r.para.toLowerCase()}`} tono="rojo">
           <p>{r.texto}</p>
           <ul class="regalo-lista">
             {r.productos.map(slug => { const p = getProducto(slug); return p ? <li><a href={`/llavero/${p.slug}`}>{p.nombre}</a> <small>desde ${p.precio_basico}</small></li> : null; })}
@@ -164,35 +162,10 @@ const fotosTaller = taller as { src: string; alt: string }[];
     </div>
   </Seccion>
 
-  <Seccion id="vende" titulo="Vende con nosotros" subtitulo="Para amigos y familia que quieran ganarse algo.">
-    <Ventana titulo="Mayoreo desde 10 piezas" tono="verde">
-      <p>¿Quieres vender {marca.marca} en tu escuela, tu trabajo o tu propio puesto? Hay precio de mayoreo desde 10 piezas y puedes mezclar diseños.</p>
-      <div class="acciones">
-        <a class="btn" href="/mayoreo">Ver precios de mayoreo</a>
-        <BotonWhatsApp tipo="mayoreo" texto="Quiero vender" class="btn btn--wa" />
-      </div>
-    </Ventana>
-  </Seccion>
 
-  <Seccion id="taller" titulo="Detrás del taller" subtitulo="Cada llavero sale de una impresora 3D aquí en la ciudad, capa por capa.">
-    <Emote slot="emote" tipo="gota" />
-    {fotosTaller.length ? (
-      <div class="grid">
-        {fotosTaller.map(f => <figure class="taller-foto"><img src={f.src} alt={f.alt} loading="lazy" width="400" height="400" /></figure>)}
-      </div>
-    ) : (
-      <div class="taller-vacio ventana">
-        <div class="ventana__cuerpo taller-vacio__cuerpo">
-          <Mascota estado="duerme" tamano={72} />
-          <p>La impresora va en camino. En cuanto llegue, aquí van las fotos y videos del proceso: del rollo de filamento al llavero en tu mano.</p>
-        </div>
-      </div>
-    )}
-  </Seccion>
 
   <Fragment slot="pie">
     {redes.map(([red, url]) => <a href={url} target="_blank" rel="noopener" style="text-transform:capitalize">{red}</a>)}
-    <a href="/mayoreo">Vende con nosotros</a>
     <a href="/activa">Activa tu llavero</a>
   </Fragment>
 
@@ -204,7 +177,7 @@ const fotosTaller = taller as { src: string; alt: string }[];
     <div class="start-pantalla__cartucho" aria-hidden="true">
       <svg viewBox="0 0 64 80" width="96" height="120" shape-rendering="crispEdges">
         <rect x="4" y="0" width="56" height="76" fill="var(--gb-3)" /><rect x="8" y="4" width="48" height="68" fill="var(--gb-1)" />
-        <rect x="16" y="12" width="32" height="28" fill="var(--magenta)" /><rect x="20" y="16" width="24" height="6" fill="var(--fondo)" /><rect x="20" y="26" width="16" height="6" fill="var(--fondo)" />
+        <rect x="16" y="12" width="32" height="28" fill="var(--rojo)" /><rect x="20" y="16" width="24" height="6" fill="var(--fondo)" /><rect x="20" y="26" width="16" height="6" fill="var(--fondo)" />
         <rect x="12" y="56" width="40" height="12" fill="var(--gb-0)" />
       </svg>
     </div>
@@ -220,7 +193,7 @@ const fotosTaller = taller as { src: string; alt: string }[];
   .hero__logo { display: none; }
   @media (min-width: 760px) { .hero__logo { display: block; } }
   .hero__lema { font-size: 1.1rem; max-width: 40ch; }
-  .hero__desde { font-size: .8rem; color: var(--magenta); margin-bottom: 1.25rem; }
+  .hero__desde { font-size: .8rem; color: var(--rojo); margin-bottom: 1.25rem; }
   .nfc { display: grid; gap: 1.25rem; }
   @media (min-width: 760px) { .nfc { grid-template-columns: auto 1fr; align-items: start; } }
   .lista-poder { padding-left: 1.1rem; margin: 0 0 1rem; }
@@ -231,8 +204,6 @@ const fotosTaller = taller as { src: string; alt: string }[];
   .regalo-lista { padding-left: 1.1rem; margin: 0; }
   .colec { display: grid; gap: 1.25rem; align-items: center; }
   @media (min-width: 760px) { .colec { grid-template-columns: auto 1fr; } }
-  .taller-vacio__cuerpo { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
-  .taller-foto { margin: 0; border: 3px solid var(--borde); box-shadow: var(--sombra); }
   .hero__aviso { margin-top: .75rem; font-size: .9rem; color: var(--tinta-suave); }
 </style>
 <script src="../scripts/start.ts"></script>

@@ -5,7 +5,7 @@
     <circle cx="-70" cy="-40" r="28"/><circle cx="-25" cy="-80" r="28"/><circle cx="25" cy="-80" r="28"/><circle cx="70" cy="-40" r="28"/>
     <ellipse cx="0" cy="30" rx="80" ry="65"/>
   </g>
-  <g fill="#ff2e88" transform="translate(200 200)">
+  <g fill="#e4342b" transform="translate(200 200)">
     <circle cx="-70" cy="-40" r="14"/><circle cx="-25" cy="-80" r="14"/><circle cx="25" cy="-80" r="14"/><circle cx="70" cy="-40" r="14"/>
     <ellipse cx="0" cy="30" rx="52" ry="42"/>
   </g>

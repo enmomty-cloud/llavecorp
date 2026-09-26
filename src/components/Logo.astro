@@ -9,7 +9,7 @@ const { alto = 44, soloEmblema = false } = Astro.props;
 let svg = logoRaw
   .replace(/#1a1433/g, 'var(--tinta)')
   .replace(/#fffaea/g, 'var(--fondo)')
-  .replace(/#ff2e88/g, 'var(--magenta)');
+  .replace(/#e4342b/g, 'var(--rojo)');
 if (soloEmblema) svg = svg.replace('viewBox="0 0 240 150"', 'viewBox="0 0 240 96"');
 const ancho = soloEmblema ? Math.round(alto * 240 / 96) : Math.round(alto * 240 / 150);
 ---

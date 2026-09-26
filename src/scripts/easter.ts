@@ -5,8 +5,8 @@ const reducido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Botín pixel original (rejilla 16x16): espada, escudo, corazón, llave, triángulo dorado, gema.
 const BOTIN: { d: string; color: string }[] = [
   { d: 'M9 1h3v2h-1v6h-1v1H9V4H8V2h1zM5 9h3v2H7v3H6v1H5zM3 11h2v2H4v2H3zM12 9h2v1h-1v1h-1z', color: 'var(--cian)' },
-  { d: 'M3 2h10v6l-1 3-4 4-4-4-1-3zM6 5v5l2 2 2-2V5z', color: 'var(--magenta)' },
-  { d: 'M2 3h3v1h1v1h1v1h2V5h1V4h1V3h3v1h1v3h-1v1h-1v1h-1v1h-1v1H8v1H7v-1H6v-1H5V9H4V8H3V7H2V4h1z', color: 'var(--magenta)' },
+  { d: 'M3 2h10v6l-1 3-4 4-4-4-1-3zM6 5v5l2 2 2-2V5z', color: 'var(--rojo)' },
+  { d: 'M2 3h3v1h1v1h1v1h2V5h1V4h1V3h3v1h1v3h-1v1h-1v1h-1v1h-1v1H8v1H7v-1H6v-1H5V9H4V8H3V7H2V4h1z', color: 'var(--rojo)' },
   { d: 'M2 5h5v2h6v2h-2v2h-2V9H7v2H2zM4 7v2h1V7z', color: 'var(--amarillo)' },
   { d: 'M8 2l6 11H2z', color: 'var(--amarillo)' },
   { d: 'M5 3h6l3 4-6 7-6-7zM6 5L4 7h8l-2-2z', color: 'var(--verde-nfc)' },

@@ -1,7 +1,7 @@
 import marca from '../config/marca.json';
 
 export type TipoMensaje =
-  | 'producto' | 'editable' | 'nuevo' | 'capsula' | 'mayoreo' | 'avisame' | 'instructivo' | 'hola';
+  | 'producto' | 'editable' | 'nuevo' | 'capsula' | 'avisame' | 'instructivo' | 'hola';
 export type Variante = 'basico' | 'nfc';
 export type DatosMensaje = { nombre?: string; variante?: Variante };
 
@@ -14,7 +14,6 @@ export function mensaje(tipo: TipoMensaje, datos: DatosMensaje = {}): string {
     case 'editable': return `${base} Texto/nombre: ___ · Colores: ___`;
     case 'nuevo': return 'Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___';
     case 'capsula': return 'Hola, quiero una cápsula sorpresa.';
-    case 'mayoreo': return `Hola, quiero vender llaveros de ${marca.marca}. Cantidad aprox: ___`;
     case 'avisame': return 'Hola, avísame cuando anden por ___';
     case 'instructivo': return 'Hola, vi el instructivo de mi llavero y quiero...';
     case 'hola': return `Hola, vi ${marca.marca} y tengo una duda.`;

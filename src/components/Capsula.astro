@@ -1,5 +1,5 @@
 ---
-// Cápsula estilo gashapon: mitad magenta arriba, crema abajo. Gira con CSS salvo prefers-reduced-motion.
+// Cápsula estilo gashapon: mitad roja arriba, crema abajo. Gira con CSS salvo prefers-reduced-motion.
 interface Props { abierta?: boolean; tamano?: number; gira?: boolean }
 const { abierta = false, tamano = 160, gira = true } = Astro.props;
 const sep = abierta ? 14 : 0;
@@ -8,7 +8,7 @@ const sep = abierta ? 14 : 0;
   <svg viewBox="0 0 120 120" width={tamano} height={tamano} shape-rendering="geometricPrecision">
     <g transform={`translate(0 ${-sep})`}>
       <path d="M8 60 A52 52 0 0 1 112 60 Z" fill="var(--tinta)" />
-      <path d="M14 60 A46 46 0 0 1 106 60 Z" fill="var(--magenta)" />
+      <path d="M14 60 A46 46 0 0 1 106 60 Z" fill="var(--rojo)" />
       <rect x="30" y="26" width="10" height="6" fill="var(--fondo)" opacity=".8" />
     </g>
     <g transform={`translate(0 ${sep})`}>

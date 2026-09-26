@@ -14,7 +14,7 @@
   <g id="capa-fondo" fill="#1a1433">
     <rect x="0" y="0" width="240" height="96" rx="48"/>
   </g>
-  <g id="capa-acento" fill="#ff2e88">
+  <g id="capa-acento" fill="#e4342b">
     <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z"/>
   </g>
   <g id="capa-relieve" fill="#fffaea">

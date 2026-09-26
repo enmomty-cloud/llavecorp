@@ -7,7 +7,7 @@
     <rect x="30" y="30" width="180" height="70" rx="6" fill="#fffaea"/>
     <circle cx="80" cy="65" r="22" fill="#1a1433"/><circle cx="160" cy="65" r="22" fill="#1a1433"/>
     <circle cx="80" cy="65" r="9" fill="#fffaea"/><circle cx="160" cy="65" r="9" fill="#fffaea"/>
-    <rect x="60" y="110" width="120" height="22" fill="#ff2e88"/>
+    <rect x="60" y="110" width="120" height="22" fill="#e4342b"/>
   </g>
   <text x="200" y="340" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="13" fill="#1a1433">Foto real muy pronto</text>
 </svg>

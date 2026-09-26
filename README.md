@@ -2,9 +2,9 @@
 
 Sitio estático de LlaveCorp: llaveros impresos en 3D, con y sin chip NFC, estilo "Canal de las 4" (retro pixel + anime de las tardes). Pedidos por WhatsApp, sin carrito ni base de datos.
 
-- **Tienda:** `/` (catálogo por sagas, cápsula sorpresa, personalización, dónde estamos, regalos, coleccionista, mayoreo, taller)
+- **Tienda:** `/` (catálogo por sagas, cápsula sorpresa, personalización, dónde estamos, regalos, coleccionista)
 - **Instructivo NFC:** `/activa` (a donde apunta el chip y el QR de cada llavero)
-- **Otras páginas:** `/saga/{slug}`, `/llavero/{slug}`, `/activa/{slug}`, `/donde`, `/mayoreo`
+- **Otras páginas:** `/saga/{slug}`, `/llavero/{slug}`, `/activa/{slug}`, `/donde`
 
 Specs y plan en `docs/superpowers/`.
 
@@ -74,17 +74,9 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 
 `dia` (lunes a domingo, con o sin acento), `lugar`, `zona`, `horario`, `activo` (false lo oculta sin borrarlo), `nota`.
 
-### Rangos de mayoreo: `src/data/mayoreo.json`
-
-`desde`, `hasta` (`null` en el último = "o más"), `precio_basico`, `precio_nfc`, `nota`.
-
 ### Guía de regalos: `src/data/regalos.json`
 
 `para`, `texto`, `productos` (lista de slugs de productos).
-
-### Fotos del taller: `src/data/taller.json`
-
-Lista de `{ "src": "/img/taller/impresora.webp", "alt": "La impresora a media impresión" }`. Mientras esté vacía se muestra el aviso de "la impresora va en camino".
 
 ## Fotos de producto
 
@@ -127,13 +119,13 @@ Cada push a `master` corre `.github/workflows/pages.yml`: construye, prueba y pu
 
 ## Fuentes
 
-Press Start 2P y Space Grotesk están en `public/fonts/` (woff2, subconjunto latín, licencia OFL). No se carga nada de Google.
+Press Start 2P (títulos y botones) y Pixelify Sans (texto) están en `public/fonts/` (woff2, subconjunto latín, licencia OFL). No se carga nada de Google.
 
 ## Estructura
 
 ```
 src/config/marca.json     marca, WhatsApp, colores, precio mínimo
-src/data/*.json           productos, sagas, usos, tianguis, mayoreo, regalos, taller
+src/data/*.json           productos, sagas, usos, tianguis, regalos
 src/lib/*.ts              carga y validación de datos, enlaces de WhatsApp
 src/components/*.astro    ventana 90s, botones, tarjeta, logo, mascota, cápsula...
 src/pages/                rutas del sitio

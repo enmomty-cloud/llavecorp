@@ -39,7 +39,7 @@ const APPSTORE = 'https://apps.apple.com/app/nfc-tools/id1252962749';
       <Ventana titulo="iPhone" tono="amarillo">
         <p>Del iPhone XS en adelante lo lee solo, con la pantalla encendida. No hay que activar nada: acerca el llavero a la parte de arriba del teléfono.</p>
       </Ventana>
-      <Ventana titulo="¿No tiene NFC?" tono="magenta">
+      <Ventana titulo="¿No tiene NFC?" tono="rojo">
         <p>Tranquilo. Escanea el QR de atrás de tu llavero con la cámara y llegas al mismo lugar.</p>
       </Ventana>
     </div>
@@ -96,8 +96,8 @@ const APPSTORE = 'https://apps.apple.com/app/nfc-tools/id1252962749';
 
   <section id="mas" class="contenedor seccion" aria-labelledby="mas-titulo">
     <div class="seccion__titulo"><h2 id="mas-titulo" style="margin:0">¿Quieres más?</h2></div>
-    <Ventana titulo="Diseños, nombres y eventos" tono="magenta">
-      <p>Hay más diseños en la tienda, llaveros con tu nombre, y precio especial si quieres varios para tu evento o para vender.</p>
+    <Ventana titulo="Diseños, nombres y eventos" tono="rojo">
+      <p>Hay más diseños en la tienda, llaveros con tu nombre, y precio especial si quieres varios para tu evento.</p>
       <div class="acciones">
         <BotonWhatsApp tipo="instructivo" texto="Pedir por WhatsApp" />
         <a class="btn btn--fantasma" href="/">Ver la tienda</a>
@@ -115,13 +115,13 @@ const APPSTORE = 'https://apps.apple.com/app/nfc-tools/id1252962749';
   .activa-hero__kicker { font-size: .55rem; color: var(--gb-2); margin-bottom: .5rem; }
   .activa-hero h1 { color: var(--gb-3); }
   .activa-hero p { color: var(--gb-3); }
-  .activa-hero :global(.mascota) { --tinta: var(--gb-0); --fondo: var(--gb-3); --magenta: var(--gb-2); --amarillo: var(--gb-2); }
+  .activa-hero :global(.mascota) { --tinta: var(--gb-0); --fondo: var(--gb-3); --rojo: var(--gb-2); --amarillo: var(--gb-2); }
   .activa-barra { margin-bottom: 1.25rem; }
   .uso { text-decoration: none; display: flex; flex-direction: column; }
   .uso__cuerpo { display: flex; flex-direction: column; gap: .5rem; }
   .uso__desc { font-size: .92rem; color: var(--tinta-suave); }
   .uso__compat { display: flex; gap: .3rem; flex-wrap: wrap; }
-  .uso:hover, .uso:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--magenta); }
+  .uso:hover, .uso:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--rojo); }
   .uso.uso--logrado .ventana__titulo { background: var(--verde-nfc); }
   .uso.uso--logrado .ventana__titulo > span:first-child::after { content: " ✓"; }
   .consejos { padding-left: 1.1rem; margin: 0; }

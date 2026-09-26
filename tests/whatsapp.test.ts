@@ -17,9 +17,8 @@ describe('mensaje', () => {
   it('diseño nuevo no lleva precio', () => {
     expect(mensaje('nuevo')).toBe('Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___');
   });
-  it('cápsula, mayoreo, avísame, instructivo, hola', () => {
+  it('cápsula, avísame, instructivo, hola', () => {
     expect(mensaje('capsula')).toBe('Hola, quiero una cápsula sorpresa.');
-    expect(mensaje('mayoreo')).toBe('Hola, quiero vender llaveros de LlaveCorp. Cantidad aprox: ___');
     expect(mensaje('avisame')).toBe('Hola, avísame cuando anden por ___');
     expect(mensaje('instructivo')).toBe('Hola, vi el instructivo de mi llavero y quiero...');
     expect(mensaje('hola')).toBe('Hola, vi LlaveCorp y tengo una duda.');

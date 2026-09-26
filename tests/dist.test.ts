@@ -59,16 +59,16 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
 });
 
 describe.skipIf(!hayDist)('etapa 3: conversión', () => {
-  it('inicio tiene cápsula, regalos, coleccionista, vende y taller', () => {
+  it('inicio tiene cápsula, regalos y coleccionista, sin taller ni mayoreo', () => {
     const html = leer('index.html');
-    for (const id of ['capsula', 'regalos', 'coleccionista', 'vende', 'taller']) expect(html).toContain(`id="${id}"`);
+    for (const id of ['capsula', 'regalos', 'coleccionista']) expect(html).toContain(`id="${id}"`);
+    expect(html).not.toContain('id="vende"');
+    expect(html).not.toContain('id="taller"');
     expect(html).toContain('Quiero una cápsula');
   });
-  it('existen /donde y /mayoreo con sus contenidos', () => {
+  it('existe /donde y ya no existe /mayoreo', () => {
     expect(existsSync('dist/donde/index.html')).toBe(true);
-    const mayoreo = leer('mayoreo/index.html');
-    expect(mayoreo).toContain('50 o más');
-    expect(mayoreo).toContain('Cantidad%20aprox');
+    expect(existsSync('dist/mayoreo/index.html')).toBe(false);
   });
 });
 
@@ -99,13 +99,13 @@ describe.skipIf(!hayDist)('etapa 4: salida', () => {
     const html = leer('index.html');
     expect(html).toContain('/fonts/press-start-2p-latin.woff2');
     expect(html).not.toContain('fonts.googleapis.com');
-    expect(existsSync('dist/fonts/space-grotesk-latin.woff2')).toBe(true);
+    expect(existsSync('dist/fonts/pixelify-sans-latin.woff2')).toBe(true);
   });
   it('sin analítica cuando el token está vacío', () => {
     expect(leer('index.html')).not.toContain('cloudflareinsights');
   });
   it('botones de tema y sonido en todas las páginas', () => {
-    for (const r of ['index.html', 'activa/index.html', 'mayoreo/index.html']) {
+    for (const r of ['index.html', 'activa/index.html', 'donde/index.html']) {
       const html = leer(r);
       expect(html).toContain('data-toggle-tema');
       expect(html).toContain('data-toggle-sonido');

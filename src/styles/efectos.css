@@ -49,7 +49,7 @@
 .start-pantalla__pie { font-size: .85rem; color: var(--gb-2); margin: 0; }
 
 /* Tarjeta elegida al azar tras START */
-@keyframes seleccion { 0%, 100% { box-shadow: 6px 6px 0 var(--magenta); } 50% { box-shadow: 6px 6px 0 var(--amarillo), 0 0 0 6px var(--amarillo); } }
+@keyframes seleccion { 0%, 100% { box-shadow: 6px 6px 0 var(--rojo); } 50% { box-shadow: 6px 6px 0 var(--amarillo), 0 0 0 6px var(--amarillo); } }
 .tarjeta--seleccionada { animation: seleccion .8s steps(2, end) infinite; position: relative; }
 .tarjeta--seleccionada::after { content: "RANDOM SELECT"; position: absolute; top: -.9rem; right: .5rem; background: var(--amarillo); color: var(--sobre-acento); border: 3px solid var(--borde); padding: .3rem .5rem; font-family: var(--fuente-pixel); font-size: .5rem; }
 

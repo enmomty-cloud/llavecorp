@@ -1,5 +1,0 @@
-[
-  { "desde": 10, "hasta": 24, "precio_basico": 50, "precio_nfc": 85, "nota": "Mezcla de diseños." },
-  { "desde": 25, "hasta": 49, "precio_basico": 45, "precio_nfc": 80, "nota": "" },
-  { "desde": 50, "hasta": null, "precio_basico": 40, "precio_nfc": 75, "nota": "Precio a platicar según diseños." }
-]

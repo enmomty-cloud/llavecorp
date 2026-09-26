@@ -2,10 +2,10 @@
   <defs><pattern id="h" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="1.8" fill="#1a1433" opacity=".14"/></pattern></defs>
   <rect width="1200" height="630" fill="#fbf4dc"/>
   <rect width="1200" height="630" fill="url(#h)"/>
-  <rect x="0" y="0" width="1200" height="14" fill="#ff2e88"/><rect x="0" y="616" width="1200" height="14" fill="#19c3d6"/>
+  <rect x="0" y="0" width="1200" height="14" fill="#e4342b"/><rect x="0" y="616" width="1200" height="14" fill="#19c3d6"/>
   <g transform="translate(120 110) scale(2.6)" shape-rendering="crispEdges">
   <rect x="0" y="0" width="240" height="96" rx="48" fill="#1a1433"/>
-  <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z" fill="#ff2e88"/>
+  <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z" fill="#e4342b"/>
   <g fill="#fffaea">
     <!-- llave pixel: cabeza escalonada con ojo vertical, vástago grueso y dos dientes -->
     <rect x="36" y="24" width="24" height="12"/>
@@ -39,9 +39,9 @@
   <rect x="16" y="4" width="64" height="56" rx="14" fill="#1a1433"/><rect x="20" y="8" width="56" height="48" rx="12" fill="#fffaea"/>
   <g fill="#1a1433"><rect x="32" y="24" width="8" height="12"/><rect x="56" y="24" width="8" height="12"/></g>
   <rect x="34" y="26" width="2" height="2" fill="#fffaea"/><rect x="58" y="26" width="2" height="2" fill="#fffaea"/>
-  <rect x="26" y="38" width="6" height="4" fill="#ff2e88"/><rect x="64" y="38" width="6" height="4" fill="#ff2e88"/>
+  <rect x="26" y="38" width="6" height="4" fill="#e4342b"/><rect x="64" y="38" width="6" height="4" fill="#e4342b"/>
   <g fill="#1a1433"><rect x="40" y="44" width="4" height="4"/><rect x="44" y="48" width="8" height="4"/><rect x="52" y="44" width="4" height="4"/></g>
-  <rect x="24" y="60" width="48" height="10" fill="#ff2e88"/><rect x="60" y="70" width="10" height="16" fill="#ff2e88"/>
+  <rect x="24" y="60" width="48" height="10" fill="#e4342b"/><rect x="60" y="70" width="10" height="16" fill="#e4342b"/>
   <rect x="36" y="70" width="24" height="46" fill="#1a1433"/><rect x="40" y="74" width="16" height="38" fill="#fffaea"/>
   <rect x="60" y="100" width="12" height="8" fill="#1a1433"/><rect x="60" y="112" width="16" height="8" fill="#1a1433"/>
   <g fill="#1a1433"><rect x="24" y="78" width="12" height="6"/><rect x="72" y="56" width="6" height="22"/><rect x="66" y="76" width="6" height="6"/></g>
