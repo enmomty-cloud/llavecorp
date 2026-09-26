@@ -25,7 +25,7 @@
 
 /* Cápsula que gira */
 @keyframes girar { to { transform: rotate(360deg); } }
-.capsula--gira { animation: girar 6s linear infinite; }
+.capsula--gira { animation: girar 8s linear infinite; will-change: transform; }
 
 /* Celular que se acerca al llavero (sección NFC) */
 @keyframes acercar { 0%, 100% { transform: translateX(0); } 45%, 60% { transform: translateX(-28px); } }

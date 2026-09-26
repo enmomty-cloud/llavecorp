@@ -71,3 +71,28 @@ describe.skipIf(!hayDist)('etapa 3: conversión', () => {
     expect(mayoreo).toContain('Cantidad%20aprox');
   });
 });
+
+describe.skipIf(!hayDist)('etapa 4: salida', () => {
+  it('sitemap, robots y Open Graph con PNG', () => {
+    expect(existsSync('dist/sitemap-index.xml')).toBe(true);
+    expect(existsSync('dist/robots.txt')).toBe(true);
+    expect(existsSync('dist/og/default.png')).toBe(true);
+    const html = leer('index.html');
+    expect(html).toContain('og:image');
+    expect(html).toContain('/og/default.png');
+  });
+  it('sin analítica cuando el token está vacío', () => {
+    expect(leer('index.html')).not.toContain('cloudflareinsights');
+  });
+  it('botones de tema y sonido en todas las páginas', () => {
+    for (const r of ['index.html', 'activa/index.html', 'mayoreo/index.html']) {
+      const html = leer(r);
+      expect(html).toContain('data-toggle-tema');
+      expect(html).toContain('data-toggle-sonido');
+    }
+  });
+  it('no aparecen marcas registradas de terceros', () => {
+    const html = leer('index.html') + leer('activa/index.html');
+    expect(html.toLowerCase()).not.toMatch(/goku|naruto|pok[eé]mon|nintendo|dragon ball|pikachu|sailor moon/);
+  });
+});

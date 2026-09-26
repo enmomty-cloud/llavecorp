@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://llavecorp.com/sitemap-index.xml

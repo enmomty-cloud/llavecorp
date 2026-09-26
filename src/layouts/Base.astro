@@ -1,5 +1,7 @@
 ---
 import marca from '../config/marca.json';
+import ToggleTema from '../components/ToggleTema.astro';
+import ToggleSonido from '../components/ToggleSonido.astro';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/componentes.css';
@@ -61,8 +63,10 @@ const actual = (prefijo: string) => (ruta === prefijo || (prefijo !== '/' && rut
         <slot name="pie" />
       </div>
       {marca.tu_dia_url && <p><a href={marca.tu_dia_url}>¿Tienes boda o XV? Conoce Tu Día</a></p>}
-      <div class="pie__controles"><slot name="controles" /></div>
+      <div class="pie__controles"><ToggleTema /><ToggleSonido /><slot name="controles" /></div>
+      <p style="margin-top:1rem;font-size:.8rem">Pista: ↑↑↓↓←→←→BA, cinco toques a {marca.mascota}, o escribe vhs.</p>
     </footer>
     <slot name="flotante" />
+    <script src="../scripts/easter.ts"></script>
   </body>
 </html>
