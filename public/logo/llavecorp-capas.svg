@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  LlaveCorp — emblema para imprimir en 3D como llavero.
-  Rejilla de 12 unidades. A 45 mm de ancho, 1 unidad = 0.1875 mm, así que ninguna forma mide menos de 2.25 mm.
+  LlaveCorp — emblema para imprimir en 3D como llavero (versión 2, a partir de las propuestas de IA).
+  Rejilla de 6 unidades; ninguna forma mide menos de 12 unidades (2.25 mm a 45 mm de ancho).
   Capas (una por color de filamento):
-    capa-fondo    -> color base (indigo/negro). Es la pieza completa: extruir 3 a 4 mm.
-    capa-acento   -> mitad derecha (magenta/rojo). Extruir 0.6 a 1 mm sobre el fondo.
-    capa-relieve  -> llave y barras de señal (crema/blanco). Extruir 0.6 a 1 mm sobre lo anterior.
+    capa-fondo    -> color base (índigo). Es la pieza completa: extruir 3 a 4 mm.
+    capa-acento   -> mitad derecha (magenta). Extruir 0.6 a 1 mm sobre el fondo.
+    capa-relieve  -> llave y barras de señal (crema). Extruir 0.6 a 1 mm sobre lo anterior.
+                     El ojo de la llave (x 36..48, y 36..60) es un hueco: ahí se ve el fondo.
     capa-argolla  -> marca del barreno para la argolla (extremo opuesto al chip). Es un hueco, no un relieve.
   El chip NFC (etiqueta redonda de 25 mm) va en una cavidad por la parte trasera, centrada bajo la mitad derecha.
 -->
@@ -17,20 +18,20 @@
     <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z"/>
   </g>
   <g id="capa-relieve" fill="#fffaea">
-    <!-- llave pixel -->
-    <rect x="48" y="30" width="36" height="12"/>
-    <rect x="48" y="54" width="36" height="12"/>
-    <rect x="48" y="42" width="12" height="12"/>
-    <rect x="72" y="42" width="12" height="12"/>
-    <rect x="84" y="42" width="36" height="12"/>
-    <rect x="84" y="54" width="12" height="12"/>
-    <rect x="108" y="54" width="12" height="12"/>
-    <!-- barras de señal NFC -->
-    <rect x="144" y="42" width="12" height="12"/>
-    <rect x="168" y="30" width="12" height="36"/>
-    <rect x="192" y="18" width="12" height="60"/>
+    <!-- llave pixel: cabeza escalonada con ojo vertical, vástago grueso y dos dientes -->
+    <rect x="36" y="24" width="24" height="12"/>
+    <rect x="24" y="36" width="12" height="24"/>
+    <rect x="48" y="36" width="24" height="24"/>
+    <rect x="36" y="60" width="24" height="12"/>
+    <rect x="72" y="40" width="42" height="16"/>
+    <rect x="78" y="56" width="12" height="12"/>
+    <rect x="102" y="56" width="12" height="12"/>
+    <!-- barras de señal NFC, alineadas abajo -->
+    <rect x="150" y="52" width="14" height="20"/>
+    <rect x="174" y="36" width="14" height="36"/>
+    <rect x="198" y="20" width="14" height="52"/>
   </g>
   <g id="capa-argolla" fill="none" stroke="#ffd23f" stroke-width="2">
-    <circle cx="22" cy="48" r="7"/>
+    <circle cx="14" cy="48" r="6"/>
   </g>
 </svg>
