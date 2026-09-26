@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import Marca from '../../components/Marca.astro';
+import Mascota from '../../components/Mascota.astro';
+import Ventana from '../../components/Ventana.astro';
+import BotonStart from '../../components/BotonStart.astro';
+import BotonWhatsApp from '../../components/BotonWhatsApp.astro';
+import BarraCorazones from '../../components/BarraCorazones.astro';
+import IconoUso from '../../components/IconoUso.astro';
+import Emote from '../../components/Emote.astro';
+import marca from '../../config/marca.json';
+import { getUsos } from '../../lib/usos';
+
+const usos = getUsos();
+const PLAY = 'https://play.google.com/store/apps/details?id=com.wakdev.wdnfc';
+const APPSTORE = 'https://apps.apple.com/app/nfc-tools/id1252962749';
+---
+<Base titulo="Activa tu llavero NFC" descripcion="Instructivo de tu llavero LlaveCorp: revisa si tu cel tiene NFC, descarga NFC Tools y elige qué poder grabarle.">
+  <Marca slot="logo" />
+
+  <section id="hero" class="activa-hero scanlines" aria-labelledby="hero-titulo">
+    <div class="contenedor activa-hero__cuerpo">
+      <Mascota estado="sorpresa" tamano={96} alt={`${marca.mascota} sorprendido`} />
+      <div>
+        <p class="pixel activa-hero__kicker">Nuevo objeto obtenido</p>
+        <h1 id="hero-titulo">¡Llavero NFC!</h1>
+        <p>Antes soplabas el cartucho. Ahora solo lo acercas. Este llavero no necesita pilas, ni cargador, ni que le reces.</p>
+        <BotonStart href="#nivel-1" />
+      </div>
+    </div>
+  </section>
+
+  <section id="nivel-1" class="contenedor seccion" aria-labelledby="n1-titulo">
+    <div class="seccion__titulo"><Emote tipo="gota" /><h2 id="n1-titulo" style="margin:0">Nivel 1: ¿tu cel tiene NFC?</h2></div>
+    <div class="grid grid--ancho">
+      <Ventana titulo="Android">
+        <p>Ve a Ajustes y busca <b>NFC</b> (suele estar en Conexiones o Dispositivos conectados). Actívalo. Casi todos los Android de los últimos años lo traen.</p>
+      </Ventana>
+      <Ventana titulo="iPhone" tono="amarillo">
+        <p>Del iPhone XS en adelante lo lee solo, con la pantalla encendida. No hay que activar nada: acerca el llavero a la parte de arriba del teléfono.</p>
+      </Ventana>
+      <Ventana titulo="¿No tiene NFC?" tono="magenta">
+        <p>Tranquilo. Escanea el QR de atrás de tu llavero con la cámara y llegas al mismo lugar.</p>
+      </Ventana>
+    </div>
+  </section>
+
+  <section id="nivel-2" class="contenedor seccion" aria-labelledby="n2-titulo">
+    <div class="seccion__titulo"><Emote tipo="brillo" /><h2 id="n2-titulo" style="margin:0">Nivel 2: descarga tu herramienta</h2></div>
+    <Ventana titulo="NFC Tools (gratis)">
+      <p>Con esta app grabas y cambias lo que hace tu llavero. Es la más usada y no pide cuenta.</p>
+      <div class="acciones">
+        <a class="btn" href={PLAY} target="_blank" rel="noopener">Google Play</a>
+        <a class="btn btn--fantasma" href={APPSTORE} target="_blank" rel="noopener">App Store</a>
+      </div>
+    </Ventana>
+  </section>
+
+  <section id="nivel-3" class="contenedor seccion" aria-labelledby="n3-titulo">
+    <div class="seccion__titulo"><Emote tipo="sorpresa" /><h2 id="n3-titulo" style="margin:0">Nivel 3: elige tu poder</h2></div>
+    <p class="seccion__sub">Cada tutorial que termines llena un corazón. Sin trampa: se guarda en tu cel.</p>
+    <BarraCorazones total={usos.length} class="activa-barra" />
+    <div class="grid usos">
+      {usos.map(u => (
+        <a class="ventana uso" href={`/activa/${u.slug}`} data-uso={u.slug}>
+          <span class="ventana__titulo"><span>{u.titulo}</span><span class="ventana__botones" aria-hidden="true"><span></span><span></span></span></span>
+          <span class="ventana__cuerpo uso__cuerpo">
+            <IconoUso icono={u.icono} />
+            <span class="uso__desc">{u.descripcion_corta}</span>
+            <span class="uso__compat">{u.compatibilidad.map(c => <span class="etiqueta etiqueta--neutra">{c === 'iphone' ? 'iPhone' : 'Android'}</span>)}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="consejos" class="contenedor seccion" aria-labelledby="consejos-titulo">
+    <div class="seccion__titulo"><Emote tipo="venita" /><h2 id="consejos-titulo" style="margin:0">Consejos de sabio</h2></div>
+    <Ventana titulo="Léelo antes de grabar" tono="amarillo">
+      <ul class="consejos">
+        <li><b>No bloquees el llavero.</b> La opción "Bloquear etiqueta" es permanente: ya no se podrá cambiar nunca.</li>
+        <li><b>Si le pones contraseña, no la olvides.</b> Sin ella no se puede modificar.</li>
+        <li><b>El chip no tiene batería.</b> Acércalo a la parte trasera del celular, a uno o cuatro centímetros.</li>
+        <li><b>Evita el metal y las tarjetas.</b> Pegado a metal o junto a la tarjeta del metro o del banco puede fallar la lectura.</li>
+        <li><b>El QR de atrás siempre funciona.</b> Aunque reprogrames el chip, el QR te trae a este instructivo.</li>
+      </ul>
+    </Ventana>
+  </section>
+
+  <section id="guardar" class="contenedor seccion" aria-labelledby="guardar-titulo">
+    <div class="seccion__titulo"><h2 id="guardar-titulo" style="margin:0">Guardar partida</h2></div>
+    <Ventana titulo="Para volver aquí" tono="verde">
+      <p>Graba <code>llavecorp.com/activa</code> en tu llavero y regresas a este instructivo cuando quieras cambiar de poder. Está en el tutorial <a href="/activa/volver">Guardar partida</a>.</p>
+    </Ventana>
+  </section>
+
+  <section id="mas" class="contenedor seccion" aria-labelledby="mas-titulo">
+    <div class="seccion__titulo"><h2 id="mas-titulo" style="margin:0">¿Quieres más?</h2></div>
+    <Ventana titulo="Diseños, nombres y eventos" tono="magenta">
+      <p>Hay más diseños en la tienda, llaveros con tu nombre, y precio especial si quieres varios para tu evento o para vender.</p>
+      <div class="acciones">
+        <BotonWhatsApp tipo="instructivo" texto="Pedir por WhatsApp" />
+        <a class="btn btn--fantasma" href="/">Ver la tienda</a>
+      </div>
+    </Ventana>
+  </section>
+
+  <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="instructivo" texto="Continuar ▶ WhatsApp" /></div>
+  <script src="../../scripts/progreso.ts"></script>
+</Base>
+
+<style>
+  .activa-hero { background: var(--gb-0); color: var(--gb-3); border-bottom: 3px solid var(--borde); padding-block: clamp(1.5rem, 5vw, 3.5rem); }
+  .activa-hero__cuerpo { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; }
+  .activa-hero__kicker { font-size: .55rem; color: var(--gb-2); margin-bottom: .5rem; }
+  .activa-hero h1 { color: var(--gb-3); }
+  .activa-hero p { color: var(--gb-3); }
+  .activa-hero :global(.mascota) { --tinta: var(--gb-0); --fondo: var(--gb-3); --magenta: var(--gb-2); --amarillo: var(--gb-2); }
+  .activa-barra { margin-bottom: 1.25rem; }
+  .uso { text-decoration: none; display: flex; flex-direction: column; }
+  .uso__cuerpo { display: flex; flex-direction: column; gap: .5rem; }
+  .uso__desc { font-size: .92rem; color: var(--tinta-suave); }
+  .uso__compat { display: flex; gap: .3rem; flex-wrap: wrap; }
+  .uso:hover, .uso:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--magenta); }
+  .uso.uso--logrado .ventana__titulo { background: var(--verde-nfc); }
+  .uso.uso--logrado .ventana__titulo > span:first-child::after { content: " ✓"; }
+  .consejos { padding-left: 1.1rem; margin: 0; }
+  .consejos li { margin-bottom: .6rem; }
+  code { font-family: var(--fuente-pixel); font-size: .6rem; background: var(--fondo); padding: .2rem .4rem; border: 2px solid var(--borde); }
+</style>

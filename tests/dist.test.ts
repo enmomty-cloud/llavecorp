@@ -41,3 +41,19 @@ describe.skipIf(!hayDist)('dist generado', () => {
     for (const e of enlaces) expect(e).toContain('https://wa.me/');
   });
 });
+
+describe.skipIf(!hayDist)('instructivo /activa', () => {
+  it('tiene los tres niveles, consejos, guardar y enlaces a NFC Tools', () => {
+    const html = leer('activa/index.html');
+    for (const id of ['nivel-1', 'nivel-2', 'nivel-3', 'consejos', 'guardar']) expect(html).toContain(`id="${id}"`);
+    expect(html).toContain('play.google.com');
+    expect(html).toContain('apps.apple.com');
+    expect(html).toContain('No bloquees');
+    expect(html).toContain('Nuevo objeto obtenido');
+  });
+  it('el tutorial de wifi tiene botón de logro y POWER UP', () => {
+    const html = leer('activa/wifi/index.html');
+    expect(html).toContain('data-logro="wifi"');
+    expect(html).toContain('POWER UP');
+  });
+});

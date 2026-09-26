@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "wifi",
+    "titulo": "Wi-Fi de tu casa",
+    "icono": "wifi",
+    "descripcion_corta": "Tus visitas tocan el llavero y ya están conectadas.",
+    "compatibilidad": ["android"],
+    "tipo_registro": "Wi-Fi",
+    "pasos": [
+      "Abre NFC Tools y entra a la pestaña Escribir.",
+      "Toca Agregar un registro y elige Wi-Fi.",
+      "Escribe el nombre de tu red y la contraseña tal cual, con mayúsculas y todo.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular hasta que diga Escritura completa."
+    ],
+    "consejo": "En iPhone puede no conectar automático. Si tus visitas traen iPhone, mejor graba un texto con la contraseña."
+  },
+  {
+    "slug": "contacto",
+    "titulo": "Tu tarjeta de contacto",
+    "icono": "contacto",
+    "descripcion_corta": "Nombre, teléfono y correo. Ideal para que te agreguen sin dictar nada.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "Contacto",
+    "pasos": [
+      "Abre NFC Tools y entra a la pestaña Escribir.",
+      "Toca Agregar un registro y elige Contacto.",
+      "Llena solo lo que quieras compartir: nombre, teléfono, correo, empresa.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Si cambias de número, vuelves a grabar y listo. No hace falta comprar otro."
+  },
+  {
+    "slug": "whatsapp",
+    "titulo": "Tu WhatsApp",
+    "icono": "whatsapp",
+    "descripcion_corta": "Lo acercan y se abre un chat contigo. Perfecto para negocio.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "URL",
+    "pasos": [
+      "Abre NFC Tools y entra a la pestaña Escribir.",
+      "Toca Agregar un registro y elige URL / URI.",
+      "Escribe https://wa.me/52 seguido de tu número a diez dígitos, sin espacios. Ejemplo: https://wa.me/528112345678",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Pruébalo tú mismo antes de repartirlo: acerca el llavero y revisa que abra tu chat y no el de otro."
+  },
+  {
+    "slug": "redes",
+    "titulo": "Tu Instagram o TikTok",
+    "icono": "redes",
+    "descripcion_corta": "Un toque y ya te siguen.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "URL",
+    "pasos": [
+      "Abre tu perfil en la app y copia el enlace (Compartir perfil, Copiar enlace).",
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, URL / URI.",
+      "Pega el enlace de tu perfil.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Si tienes varias redes, usa un enlace de tipo 'todas mis redes' y graba ese."
+  },
+  {
+    "slug": "ubicacion",
+    "titulo": "Cómo llegar a tu casa o negocio",
+    "icono": "ubicacion",
+    "descripcion_corta": "Abre el mapa directo a tu puerta.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "URL",
+    "pasos": [
+      "En Google Maps busca tu dirección, toca Compartir y copia el enlace.",
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, URL / URI.",
+      "Pega el enlace del mapa.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Este uso es para negocios o para el llavero que le das a la familia. No pongas tu casa en un llavero que vayas a perder."
+  },
+  {
+    "slug": "mascota",
+    "titulo": "Placa de tu mascota",
+    "icono": "mascota",
+    "descripcion_corta": "Si se pierde, quien la encuentre acerca el celular y ve tu teléfono.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "Texto o URL",
+    "pasos": [
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, Texto.",
+      "Escribe algo como: 'Me llamo Firulais. Si me encontraste, llama a Ana al 81 1234 5678'.",
+      "Si prefieres que abra tu WhatsApp directo, usa URL con https://wa.me/52 y tu número.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Pon también el dato en el QR o en una etiqueta escrita. No todos saben acercar el celular."
+  },
+  {
+    "slug": "mochila",
+    "titulo": "Mochila de niño",
+    "icono": "mochila",
+    "descripcion_corta": "Nombre del niño y el teléfono de mamá o papá. Nada más.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "Texto o Contacto",
+    "pasos": [
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, Texto.",
+      "Escribe solo el nombre del niño y un teléfono de contacto. Ejemplo: 'Mateo. Mamá: 81 1234 5678'.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Solo nombre y teléfono de papá o mamá. No pongas la dirección ni la escuela."
+  },
+  {
+    "slug": "emergencia",
+    "titulo": "Datos de emergencia",
+    "icono": "emergencia",
+    "descripcion_corta": "Contacto de emergencia, tipo de sangre o alergias, si tú quieres.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "Texto",
+    "pasos": [
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, Texto.",
+      "Escribe lo que quieras que sepa quien te ayude: 'Emergencia: llamar a Luis 81 1234 5678. Alérgico a penicilina.'",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Tú decides qué datos pones. Piensa que cualquiera con celular puede leerlos."
+  },
+  {
+    "slug": "playlist",
+    "titulo": "Tu playlist favorita",
+    "icono": "playlist",
+    "descripcion_corta": "Acércalo y arranca la música de la fiesta.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "URL",
+    "pasos": [
+      "En tu app de música abre la playlist, toca Compartir y copia el enlace.",
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, URL / URI.",
+      "Pega el enlace.",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Una playlist con nombre de los 2000 gana cualquier reunión."
+  },
+  {
+    "slug": "automatizacion",
+    "titulo": "Modo chavoruco: rutinas",
+    "icono": "rutina",
+    "descripcion_corta": "Tocas el llavero y el cel hace varias cosas solo: no molestar, alarma, música.",
+    "compatibilidad": ["iphone", "android"],
+    "tipo_registro": "Automatización",
+    "pasos": [
+      "iPhone: abre Atajos, pestaña Automatización, toca +, elige NFC y escanea tu llavero.",
+      "Ponle nombre y agrega acciones: activar No molestar, poner alarma, abrir tu playlist.",
+      "Android: instala una app de automatización que soporte NFC (por ejemplo, la de tareas automáticas de NFC Tools) y crea una tarea con las acciones que quieras.",
+      "Acerca el llavero para probar que se dispare la rutina."
+    ],
+    "consejo": "En iPhone esto no escribe nada en el chip: el celular reconoce el llavero. Puedes tener otro uso grabado al mismo tiempo."
+  },
+  {
+    "slug": "volver",
+    "titulo": "Guardar partida: volver aquí",
+    "icono": "guardar",
+    "descripcion_corta": "Graba este instructivo para regresar cuando quieras cambiar de poder.",
+    "compatibilidad": ["android", "iphone"],
+    "tipo_registro": "URL",
+    "pasos": [
+      "Abre NFC Tools, pestaña Escribir, Agregar un registro, URL / URI.",
+      "Escribe https://llavecorp.com/activa",
+      "Regresa, toca Escribir y acerca el llavero a la parte trasera del celular."
+    ],
+    "consejo": "Aunque cambies el chip, el QR de atrás de tu llavero siempre te trae aquí."
+  }
+]

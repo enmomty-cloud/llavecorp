@@ -1,0 +1,22 @@
+---
+// Íconos pixel originales para cada uso. Rejilla de 16x16.
+interface Props { icono: string; tamano?: number }
+const { icono, tamano = 40 } = Astro.props;
+const ICONOS: Record<string, string> = {
+  wifi: 'M2 6h12v2H2zM4 9h8v2H4zM6 12h4v2H6z',
+  contacto: 'M2 2h12v12H2zM5 5h3v3H5zM4 10h6v2H4zM10 5h2v2h-2z',
+  whatsapp: 'M3 2h10v9H8l-3 3v-3H3zM5 5h6v1H5zM5 7h4v1H5z',
+  redes: 'M4 2h8v12H4zM6 4h4v6H6zM7 11h2v1H7z',
+  ubicacion: 'M5 1h6v2h2v5h-2v2h-2v2H7v-2H5V8H3V3h2zM6 4h4v3H6z',
+  mascota: 'M3 3h3v3H3zM10 3h3v3h-3zM1 7h3v3H1zM12 7h3v3h-3zM5 8h6v6H5z',
+  mochila: 'M6 1h4v2H6zM3 4h10v11H3zM5 7h6v3H5z',
+  emergencia: 'M6 2h4v4h4v4h-4v4H6v-4H2V6h4z',
+  playlist: 'M9 2h5v2h-3v8h-2v2H5v-2h2V4h2zM6 12h2v1H6z',
+  rutina: 'M7 1h2v3H7zM7 12h2v3H7zM1 7h3v2H1zM12 7h3v2h-3zM5 5h6v6H5zM7 7h2v2H7z',
+  guardar: 'M2 2h10l2 2v10H2zM4 4h6v3H4zM5 10h6v3H5z',
+};
+const d = ICONOS[icono] ?? ICONOS.guardar;
+---
+<svg viewBox="0 0 16 16" width={tamano} height={tamano} shape-rendering="crispEdges" aria-hidden="true" class="icono-uso">
+  <path d={d} fill="var(--tinta)" fill-rule="evenodd" />
+</svg>

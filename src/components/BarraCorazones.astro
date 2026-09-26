@@ -1,0 +1,12 @@
+---
+// Barra de vida: un corazón pixel por tutorial. El script progreso.ts los llena según localStorage.
+interface Props { total: number; class?: string }
+const { total, class: clase = '' } = Astro.props;
+---
+<div class:list={['corazones', clase]} data-total={total} role="img" aria-label={`Progreso: 0 de ${total} tutoriales completados`}>
+  {Array.from({ length: total }, (_, i) => (
+    <svg class="corazon" viewBox="0 0 11 10" width="22" height="20" shape-rendering="crispEdges" data-i={i} aria-hidden="true">
+      <path d="M1 1h2v1h1v1h1v1h1V3h1V2h1V1h2v1h1v3h-1v1h-1v1h-1v1h-1v1H5V9H4V8H3V7H2V6H1V5H0V2h1z" />
+    </svg>
+  ))}
+</div>

@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Marca from '../../components/Marca.astro';
+import Mascota from '../../components/Mascota.astro';
+import Ventana from '../../components/Ventana.astro';
+import BotonWhatsApp from '../../components/BotonWhatsApp.astro';
+import BarraCorazones from '../../components/BarraCorazones.astro';
+import IconoUso from '../../components/IconoUso.astro';
+import { getUsos, PASOS_BASE } from '../../lib/usos';
+
+export function getStaticPaths() {
+  const usos = getUsos();
+  return usos.map((u, i) => ({
+    params: { slug: u.slug },
+    props: { uso: u, anterior: usos[i - 1] ?? null, siguiente: usos[i + 1] ?? null, total: usos.length },
+  }));
+}
+const { uso, anterior, siguiente, total } = Astro.props;
+const esAutomatizacion = uso.slug === 'automatizacion';
+---
+<Base titulo={`${uso.titulo} con tu llavero NFC`} descripcion={uso.descripcion_corta}>
+  <Marca slot="logo" />
+  <section class="contenedor seccion" aria-labelledby="uso-titulo">
+    <p class="seccion__sub" style="margin:0 0 .5rem"><a href="/activa#nivel-3">Nivel 3: elige tu poder</a></p>
+    <div class="tuto-cab">
+      <IconoUso icono={uso.icono} tamano={56} />
+      <div>
+        <h1 id="uso-titulo">{uso.titulo}</h1>
+        <p>{uso.descripcion_corta}</p>
+        <div class="tarjeta__meta">
+          {uso.compatibilidad.map(c => <span class="etiqueta etiqueta--neutra">{c === 'iphone' ? 'iPhone' : 'Android'}</span>)}
+          <span class="etiqueta">{uso.tipo_registro}</span>
+        </div>
+      </div>
+    </div>
+    <BarraCorazones total={total} class="tuto-barra" />
+
+    <div class="grid grid--ancho">
+      {!esAutomatizacion && (
+        <Ventana titulo="Lo básico en NFC Tools" tono="cian">
+          <ol class="pasos">{PASOS_BASE.map(p => <li>{p}</li>)}</ol>
+          <p><small>Si no tienes la app: <a href="/activa#nivel-2">Nivel 2</a>.</small></p>
+        </Ventana>
+      )}
+      <Ventana titulo="Paso a paso" tono="verde" nivelTitulo="h2">
+        <ol class="pasos">{uso.pasos.map(p => <li>{p}</li>)}</ol>
+        <button class="btn btn--start" type="button" data-logro={uso.slug} aria-pressed="false">¡Lo logré!</button>
+        <div id="powerup" class="powerup-caja" hidden role="status">
+          <Mascota estado="poder" tamano={72} />
+          <p class="pixel powerup-texto">¡POWER UP!</p>
+          <p>Un corazón más. Sigue con otro poder o presume tu llavero.</p>
+        </div>
+      </Ventana>
+      <Ventana titulo="Consejo" tono="amarillo">
+        <p>{uso.consejo}</p>
+      </Ventana>
+    </div>
+
+    <nav class="tuto-nav" aria-label="Otros usos">
+      {anterior ? <a class="btn btn--fantasma btn--chico" href={`/activa/${anterior.slug}`}>← {anterior.titulo}</a> : <span></span>}
+      {siguiente ? <a class="btn btn--fantasma btn--chico" href={`/activa/${siguiente.slug}`}>{siguiente.titulo} →</a> : <a class="btn btn--chico" href="/activa#nivel-3">Todos los poderes</a>}
+    </nav>
+  </section>
+
+  <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="instructivo" texto="Continuar ▶ WhatsApp" /></div>
+  <script src="../../scripts/progreso.ts"></script>
+</Base>
+
+<style>
+  .tuto-cab { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin-bottom: 1rem; }
+  .tuto-barra { margin-bottom: 1.5rem; }
+  .powerup-caja { margin-top: 1rem; padding: 1rem; border: 3px solid var(--borde); background: var(--fondo); display: grid; justify-items: center; text-align: center; gap: .5rem; }
+  .powerup-texto { font-size: 1rem; color: var(--magenta); margin: 0; }
+  .tuto-nav { display: flex; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+</style>
