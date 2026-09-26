@@ -54,5 +54,10 @@
     "sellos_capsula": 10,
     "nota": "Promoción de introducción. Cuentan solo los pedidos hechos desde esta página por WhatsApp; llevo la cuenta con tu número. Puede terminar en cualquier momento sin previo aviso.",
     "requisito": "Para canjear cualquiera de los dos premios, muéstrame por WhatsApp una captura de que sigues a LlaveCorp en Instagram y otra de Facebook."
+  },
+  "eventos": {
+    "minimo_piezas": 20,
+    "tiempo": "de dos a tres semanas",
+    "anticipo": "la mitad al confirmar y el resto al entregar"
   }
 }

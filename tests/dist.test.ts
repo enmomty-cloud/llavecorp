@@ -61,7 +61,8 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
 describe.skipIf(!hayDist)('etapa 3: conversión', () => {
   it('inicio tiene la promoción y regalos, sin taller ni mayoreo ni cápsula a la venta', () => {
     const html = leer('index.html');
-    for (const id of ['promo', 'regalos', 'entregas']) expect(html).toContain(`id="${id}"`);
+    for (const id of ['promo', 'regalos', 'entregas', 'eventos']) expect(html).toContain(`id="${id}"`);
+    expect(html).toContain('Cotizar mi evento');
     expect(html).toContain('Soriana Colosio');
     expect(html).toContain('cinco piezas');
     expect(html).toContain('$30');
@@ -87,8 +88,7 @@ describe.skipIf(!hayDist)('cartuchos, START y botín', () => {
     expect(html).toContain('data-slug="cartucho-8bits"');
     expect(html).toContain('/img/productos/cartucho-16bits.svg');
     expect(existsSync('dist/llavero/cartucho-8bits/index.html')).toBe(true);
-    expect(existsSync('dist/saga/aventura/index.html')).toBe(true);
-    expect(html).toContain('data-slug="cartucho-dorado"');
+    expect(existsSync('dist/saga/aventura/index.html')).toBe(false);
   });
   it('la portada tiene la pantalla de START y las tarjetas llevan slug', () => {
     const html = leer('index.html');

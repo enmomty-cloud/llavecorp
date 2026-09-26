@@ -39,6 +39,7 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 | `tu_dia_url` | Enlace a Tu Día para el pie. Vacío = no aparece. |
 | `analitica_token` | Token de Cloudflare Web Analytics. Vacío = sin analítica. |
 | `mascota`, `ciudad`, `lema` | Textos que aparecen en varias partes. |
+| `eventos` | Bodas y XV: `minimo_piezas`, `tiempo`, `anticipo`. |
 | `promocion` | La promo de sellos. `activa: false` quita la sección entera; `sellos_llavero` y `sellos_capsula` son los números de compra con premio; `nota` es la letra chica; `requisito` es lo que piden para canjear (capturas de seguir en redes). |
 
 ## Cómo agregar cosas (solo editas JSON y vuelves a construir)

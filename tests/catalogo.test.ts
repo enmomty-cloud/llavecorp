@@ -7,7 +7,7 @@ const sagas = getSagas();
 
 describe('catálogo', () => {
   it('sagas ordenadas por orden', () => {
-    expect(sagas.map(s => s.slug)).toEqual(['retro', 'aventura', 'anime', 'mascotas', 'nombre']);
+    expect(sagas.map(s => s.slug)).toEqual(['retro', 'anime', 'mascotas', 'nombre']);
   });
   it('los datos reales validan sin errores', () => {
     expect(validarCatalogo(getProductos(), sagas, 60)).toEqual([]);

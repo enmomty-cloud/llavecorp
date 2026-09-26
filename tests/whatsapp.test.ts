@@ -19,6 +19,7 @@ describe('mensaje', () => {
   });
   it('avísame, instructivo, hola', () => {
     expect(mensaje('avisame')).toBe('Hola, avísame cuando anden por ___');
+    expect(mensaje('evento')).toContain('Boda o XV: ___');
     expect(mensaje('instructivo')).toBe('Hola, vi el instructivo de mi llavero y quiero...');
     expect(mensaje('hola')).toBe('Hola, vi LlaveCorp y tengo una duda.');
   });

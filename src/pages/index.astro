@@ -101,6 +101,31 @@ const promo = marca.promocion;
     </div>
   </Seccion>
 
+
+  <Seccion id="eventos" titulo="Bodas y XV" subtitulo="Recuerdos que no se quedan en el cajón: llaveros con los nombres, la fecha y los colores de tu fiesta.">
+    <Emote slot="emote" tipo="brillo" />
+    <div class="grid grid--ancho">
+      <Ventana titulo="Recuerdo de boda" tono="rojo">
+        <img class="evento-img" src="/img/productos/recuerdo-boda.svg" alt="Llavero pixel de corazón con dos anillos" width="400" height="400" loading="lazy" />
+        <p>Corazón, anillos o el diseño que quieran, con sus nombres y la fecha. En los colores de la boda.</p>
+      </Ventana>
+      <Ventana titulo="Recuerdo de XV" tono="amarillo">
+        <img class="evento-img" src="/img/productos/recuerdo-xv.svg" alt="Llavero pixel de corona de quinceañera" width="400" height="400" loading="lazy" />
+        <p>Corona, estrella o el tema de la fiesta, con el nombre de la quinceañera y la fecha.</p>
+      </Ventana>
+      <Ventana titulo="Con poder NFC" tono="verde">
+        <p>Con chip, cada llavero abre lo que quieran: la invitación digital, el álbum de fotos de la fiesta, la playlist, o un mensaje de agradecimiento. El recuerdo que sigue funcionando después del evento.</p>
+      </Ventana>
+      <Ventana titulo="Cómo se pide">
+        <p>Desde {marca.eventos.minimo_piezas} piezas. Me mandas el evento, la fecha, la cantidad y los nombres; te paso una propuesta con foto antes de imprimir. Tarda {marca.eventos.tiempo}; se paga {marca.eventos.anticipo}.</p>
+        <div class="acciones">
+          <BotonWhatsApp tipo="evento" texto="Cotizar mi evento" />
+          {marca.tu_dia_url && <a class="btn btn--fantasma" href={marca.tu_dia_url}>Invitaciones con Tu Día</a>}
+        </div>
+      </Ventana>
+    </div>
+  </Seccion>
+
   <Seccion id="donde" titulo="¿Dónde estamos esta semana?" subtitulo="Ven al puesto, tócalos y llévatelo en la mano.">
     <Emote slot="emote" tipo="gota" />
     {puestos.length ? (
@@ -164,6 +189,7 @@ const promo = marca.promocion;
 
   <Fragment slot="pie">
     {redes.map(([red, url]) => <a href={url} target="_blank" rel="noopener" style="text-transform:capitalize">{red}</a>)}
+    <a href="/#eventos">Bodas y XV</a>
     <a href="/activa">Activa tu llavero</a>
   </Fragment>
 
@@ -219,5 +245,6 @@ const promo = marca.promocion;
   .promo__num { font-family: var(--fuente-pixel); font-size: 1.4rem; color: var(--rojo); }
   .promo__nota { grid-column: 1 / -1; color: var(--tinta-suave); font-size: .9rem; }
   .hero__aviso { margin-top: .75rem; font-size: .9rem; color: var(--tinta-suave); }
+  .evento-img { width: 160px; border: 3px solid var(--borde); border-radius: var(--radio); margin-bottom: .75rem; }
 </style>
 <script src="../scripts/start.ts"></script>
