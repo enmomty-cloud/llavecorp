@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Marca from '../components/Marca.astro';
+import Ventana from '../components/Ventana.astro';
+import BotonWhatsApp from '../components/BotonWhatsApp.astro';
+import Mascota from '../components/Mascota.astro';
+import { getTianguisActivos } from '../lib/tianguis';
+
+const puestos = getTianguisActivos();
+---
+<Base titulo="¿Dónde estamos?" descripcion="Tianguis y mercados donde encuentras los llaveros LlaveCorp esta semana.">
+  <Marca slot="logo" />
+  <section class="contenedor seccion" aria-labelledby="donde-titulo">
+    <div class="donde-cab">
+      <Mascota estado="saluda" tamano={72} />
+      <div>
+        <h1 id="donde-titulo">¿Dónde estamos esta semana?</h1>
+        <p>Ven al puesto, tócalos y llévatelo en la mano. Si no alcanzas a venir, pide por WhatsApp y quedamos en un punto.</p>
+      </div>
+    </div>
+    {puestos.length ? (
+      <div class="grid grid--ancho">
+        {puestos.map(p => (
+          <Ventana titulo={p.dia} tono="amarillo">
+            <p><b>{p.lugar}</b>{p.zona && <><br />{p.zona}</>}</p>
+            <p>{p.horario}</p>
+            {p.nota && <p><small>{p.nota}</small></p>}
+          </Ventana>
+        ))}
+      </div>
+    ) : (
+      <Ventana titulo="Esta semana" tono="magenta"><p>Esta semana descansamos. Escríbenos y te decimos dónde caemos.</p></Ventana>
+    )}
+    <div class="acciones" style="margin-top:1.5rem">
+      <BotonWhatsApp tipo="avisame" texto="Avísame cuando andes cerca" />
+      <a class="btn btn--fantasma" href="/#catalogo">Ver el catálogo</a>
+    </div>
+  </section>
+  <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" /></div>
+</Base>
+<style>
+  .donde-cab { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin-bottom: 1.5rem; }
+</style>

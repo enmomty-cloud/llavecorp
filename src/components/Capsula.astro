@@ -1,0 +1,30 @@
+---
+// Cápsula estilo gashapon: mitad magenta arriba, crema abajo. Gira con CSS salvo prefers-reduced-motion.
+interface Props { abierta?: boolean; tamano?: number; gira?: boolean }
+const { abierta = false, tamano = 160, gira = true } = Astro.props;
+const sep = abierta ? 14 : 0;
+---
+<div class:list={['capsula', gira && !abierta && 'capsula--gira']} style={`width:${tamano}px;height:${tamano}px`} aria-hidden="true">
+  <svg viewBox="0 0 120 120" width={tamano} height={tamano} shape-rendering="geometricPrecision">
+    <g transform={`translate(0 ${-sep})`}>
+      <path d="M8 60 A52 52 0 0 1 112 60 Z" fill="var(--tinta)" />
+      <path d="M14 60 A46 46 0 0 1 106 60 Z" fill="var(--magenta)" />
+      <rect x="30" y="26" width="10" height="6" fill="var(--fondo)" opacity=".8" />
+    </g>
+    <g transform={`translate(0 ${sep})`}>
+      <path d="M8 60 A52 52 0 0 0 112 60 Z" fill="var(--tinta)" />
+      <path d="M14 60 A46 46 0 0 0 106 60 Z" fill="var(--fondo)" />
+    </g>
+    {abierta ? (
+      <g fill="var(--tinta)" transform="translate(48 44)">
+        <rect x="4" y="0" width="16" height="4" /><rect x="0" y="4" width="4" height="8" /><rect x="20" y="4" width="4" height="8" />
+        <rect x="16" y="12" width="4" height="4" /><rect x="10" y="16" width="6" height="4" /><rect x="10" y="20" width="4" height="4" /><rect x="10" y="28" width="4" height="4" />
+      </g>
+    ) : (
+      <rect x="8" y="56" width="104" height="8" fill="var(--tinta)" />
+    )}
+  </svg>
+</div>
+<style>
+  .capsula { display: inline-block; filter: drop-shadow(4px 4px 0 var(--tinta)); }
+</style>

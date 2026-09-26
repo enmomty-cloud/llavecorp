@@ -12,15 +12,21 @@ import CabeceraSaga from '../components/CabeceraSaga.astro';
 import Paleta from '../components/Paleta.astro';
 import Emote from '../components/Emote.astro';
 import DemoNfc from '../components/DemoNfc.astro';
+import Capsula from '../components/Capsula.astro';
+import TarjetaColeccionista from '../components/TarjetaColeccionista.astro';
 import marca from '../config/marca.json';
-import { destacados, getSagas, productosPorSaga, precioDesde } from '../lib/catalogo';
+import { destacados, getSagas, productosPorSaga, precioDesde, getProducto } from '../lib/catalogo';
 import { getTianguisActivos } from '../lib/tianguis';
+import regalos from '../data/regalos.json';
+import taller from '../data/taller.json';
 
 const fichas = destacados();
-const sagas = getSagas();
+const sagas = getSagas().filter(s => s.slug !== 'capsula');
 const desde = precioDesde();
 const puestos = getTianguisActivos();
 const redes = Object.entries(marca.redes).filter(([, url]) => url);
+const capsula = getProducto('capsula-sorpresa');
+const fotosTaller = taller as { src: string; alt: string }[];
 ---
 <Base titulo={marca.lema} descripcion={`Llaveros impresos en 3D con chip NFC, estilo retro y anime, desde $${desde}. Pide por WhatsApp o búscanos en el tianguis.`}>
   <Marca slot="logo" />
@@ -74,6 +80,25 @@ const redes = Object.entries(marca.redes).filter(([, url]) => url);
     ))}
   </Seccion>
 
+  {capsula && (
+    <Seccion id="capsula" titulo="Cápsula sorpresa" subtitulo="No sabes cuál te toca. Esa es la gracia.">
+      <Emote slot="emote" tipo="brillo" />
+      <div class="capsula-sec ventana">
+        <div class="ventana__cuerpo capsula-sec__cuerpo">
+          <Capsula tamano={150} />
+          <div>
+            <p>Un llavero al azar de cualquier saga, en su cápsula. Ideal para regalar sin pensarle o para coleccionar sin repetir.</p>
+            <p class="precio"><span>${capsula.precio_basico}</span></p>
+            <div class="acciones">
+              <BotonWhatsApp tipo="capsula" texto="Quiero una cápsula" />
+              <a class="btn btn--fantasma" href="/llavero/capsula-sorpresa">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Seccion>
+  )}
+
   <Seccion id="hazlo-tuyo" titulo="Hazlo tuyo" subtitulo="Tres formas de personalizar, sin letra chiquita." fondo="halftone">
     <Emote slot="emote" tipo="sorpresa" />
     <div class="grid grid--ancho">
@@ -115,6 +140,55 @@ const redes = Object.entries(marca.redes).filter(([, url]) => url);
     </div>
   </Seccion>
 
+  <Seccion id="regalos" titulo="Guía de regalos" subtitulo="Para cuando no sabes qué llevar y no quieres llegar con las manos vacías." fondo="halftone">
+    <div class="grid grid--ancho">
+      {regalos.map(r => (
+        <Ventana titulo={`Para ${r.para.toLowerCase()}`} tono="magenta">
+          <p>{r.texto}</p>
+          <ul class="regalo-lista">
+            {r.productos.map(slug => { const p = getProducto(slug); return p ? <li><a href={`/llavero/${p.slug}`}>{p.nombre}</a> <small>desde ${p.precio_basico}</small></li> : null; })}
+          </ul>
+        </Ventana>
+      ))}
+    </div>
+  </Seccion>
+
+  <Seccion id="coleccionista" titulo="Tarjeta de coleccionista" subtitulo="Junta cinco sellos y el sexto llavero es gratis.">
+    <div class="colec">
+      <TarjetaColeccionista />
+      <div>
+        <p>La tarjeta te la doy en el puesto con tu primera compra. Cada llavero es un sello, no importa el diseño ni el precio. Al quinto sello, el siguiente va por la casa.</p>
+        <p><small>Un sello por llavero. La tarjeta no caduca; si la pierdes, empezamos otra.</small></p>
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="vende" titulo="Vende con nosotros" subtitulo="Para amigos y familia que quieran ganarse algo.">
+    <Ventana titulo="Mayoreo desde 10 piezas" tono="verde">
+      <p>¿Quieres vender {marca.marca} en tu escuela, tu trabajo o tu propio puesto? Hay precio de mayoreo desde 10 piezas y puedes mezclar diseños.</p>
+      <div class="acciones">
+        <a class="btn" href="/mayoreo">Ver precios de mayoreo</a>
+        <BotonWhatsApp tipo="mayoreo" texto="Quiero vender" class="btn btn--wa" />
+      </div>
+    </Ventana>
+  </Seccion>
+
+  <Seccion id="taller" titulo="Detrás del taller" subtitulo="Cada llavero sale de una impresora 3D aquí en la ciudad, capa por capa.">
+    <Emote slot="emote" tipo="gota" />
+    {fotosTaller.length ? (
+      <div class="grid">
+        {fotosTaller.map(f => <figure class="taller-foto"><img src={f.src} alt={f.alt} loading="lazy" width="400" height="400" /></figure>)}
+      </div>
+    ) : (
+      <div class="taller-vacio ventana">
+        <div class="ventana__cuerpo taller-vacio__cuerpo">
+          <Mascota estado="duerme" tamano={72} />
+          <p>La impresora va en camino. En cuanto llegue, aquí van las fotos y videos del proceso: del rollo de filamento al llavero en tu mano.</p>
+        </div>
+      </div>
+    )}
+  </Seccion>
+
   <Fragment slot="pie">
     {redes.map(([red, url]) => <a href={url} target="_blank" rel="noopener" style="text-transform:capitalize">{red}</a>)}
     <a href="/mayoreo">Vende con nosotros</a>
@@ -139,4 +213,11 @@ const redes = Object.entries(marca.redes).filter(([, url]) => url);
   .lista-poder { padding-left: 1.1rem; margin: 0 0 1rem; }
   .lista-poder li { margin-bottom: .5rem; }
   .saga + .saga { margin-top: 2.5rem; }
+  .capsula-sec__cuerpo { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
+  @media (min-width: 700px) { .capsula-sec__cuerpo { grid-template-columns: auto 1fr; text-align: left; justify-items: start; align-items: center; } }
+  .regalo-lista { padding-left: 1.1rem; margin: 0; }
+  .colec { display: grid; gap: 1.25rem; align-items: center; }
+  @media (min-width: 760px) { .colec { grid-template-columns: auto 1fr; } }
+  .taller-vacio__cuerpo { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
+  .taller-foto { margin: 0; border: 3px solid var(--borde); box-shadow: var(--sombra); }
 </style>

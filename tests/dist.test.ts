@@ -57,3 +57,17 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
     expect(html).toContain('POWER UP');
   });
 });
+
+describe.skipIf(!hayDist)('etapa 3: conversión', () => {
+  it('inicio tiene cápsula, regalos, coleccionista, vende y taller', () => {
+    const html = leer('index.html');
+    for (const id of ['capsula', 'regalos', 'coleccionista', 'vende', 'taller']) expect(html).toContain(`id="${id}"`);
+    expect(html).toContain('Quiero una cápsula');
+  });
+  it('existen /donde y /mayoreo con sus contenidos', () => {
+    expect(existsSync('dist/donde/index.html')).toBe(true);
+    const mayoreo = leer('mayoreo/index.html');
+    expect(mayoreo).toContain('50 o más');
+    expect(mayoreo).toContain('Cantidad%20aprox');
+  });
+});
