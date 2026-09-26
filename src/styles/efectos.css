@@ -33,9 +33,25 @@
 @keyframes ondas { 0% { opacity: 0; transform: scale(.6); } 50% { opacity: 1; } 100% { opacity: 0; transform: scale(1.3); } }
 .nfc-demo__onda { animation: ondas 2.4s ease-out infinite; transform-origin: center; }
 
-/* Lluvia de corazones (easter egg) */
+/* Lluvia de botín (código secreto): espadas, escudos, corazones, llaves, triángulos dorados y gemas */
 @keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
-.corazon-cae { position: fixed; top: -40px; z-index: 100; pointer-events: none; font-size: 1.5rem; animation: caer 3s linear forwards; }
+.botin-cae { position: fixed; top: -40px; z-index: 100; pointer-events: none; animation: caer 3s linear forwards; filter: drop-shadow(2px 2px 0 var(--tinta)); }
+@keyframes aviso-botin { 0% { transform: translate(-50%, -50%) scale(.4); opacity: 0; } 15% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+.botin-aviso { position: fixed; left: 50%; top: 40%; z-index: 101; margin: 0; padding: 1rem 1.5rem; background: var(--amarillo); color: var(--sobre-acento); border: 3px solid var(--borde); box-shadow: var(--sombra); font-size: clamp(.8rem, 3vw, 1.3rem); pointer-events: none; animation: aviso-botin 2.6s steps(12) forwards; }
+
+/* Pantalla PRESIONA START */
+.start-pantalla { position: fixed; inset: 0; z-index: 200; display: grid; place-content: center; justify-items: center; gap: 1.25rem; background: var(--gb-0); color: var(--gb-3); text-align: center; padding: 1rem; }
+.start-pantalla[hidden] { display: none; }
+@keyframes cartucho-entra { 0% { transform: translateY(-40px); opacity: 0; } 60% { transform: translateY(6px); opacity: 1; } 100% { transform: translateY(0); } }
+.start-pantalla__cartucho { animation: cartucho-entra .5s steps(5) both; }
+.start-pantalla__linea { font-size: clamp(1rem, 5vw, 2rem); margin: 0; color: var(--gb-3); animation: parpadeo .65s steps(2, end) infinite; }
+.start-pantalla__linea--go { color: var(--amarillo); animation: powerup .4s steps(4) both; }
+.start-pantalla__pie { font-size: .85rem; color: var(--gb-2); margin: 0; }
+
+/* Tarjeta elegida al azar tras START */
+@keyframes seleccion { 0%, 100% { box-shadow: 6px 6px 0 var(--magenta); } 50% { box-shadow: 6px 6px 0 var(--amarillo), 0 0 0 6px var(--amarillo); } }
+.tarjeta--seleccionada { animation: seleccion .8s steps(2, end) infinite; position: relative; }
+.tarjeta--seleccionada::after { content: "RANDOM SELECT"; position: absolute; top: -.9rem; right: .5rem; background: var(--amarillo); color: var(--sobre-acento); border: 3px solid var(--borde); padding: .3rem .5rem; font-family: var(--fuente-pixel); font-size: .5rem; }
 
 /* Modo VHS */
 @keyframes ruido { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }

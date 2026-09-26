@@ -11,7 +11,7 @@ const img = p.imagen || `/img/placeholders/${p.saga}.svg`;
 const tipo = p.editable ? 'editable' : 'producto';
 const url = `/llavero/${p.slug}`;
 ---
-<Ventana titulo={p.nombre} class="tarjeta" tono={p.disponible ? 'cian' : 'amarillo'}>
+<Ventana titulo={p.nombre} class:list={['tarjeta', !p.disponible && 'tarjeta--agotado']} tono={p.disponible ? 'cian' : 'amarillo'} datos={{ slug: p.slug, nombre: p.nombre }}>
   <a class="tarjeta__img" href={url} tabindex="-1" aria-hidden="true">
     <img src={img} alt="" width="400" height="400" loading="lazy" />
   </a>

@@ -72,6 +72,20 @@ describe.skipIf(!hayDist)('etapa 3: conversión', () => {
   });
 });
 
+describe.skipIf(!hayDist)('cartuchos, START y botín', () => {
+  it('los cartuchos están en la Saga Retro con su imagen', () => {
+    const html = leer('index.html');
+    expect(html).toContain('data-slug="cartucho-8bits"');
+    expect(html).toContain('/img/productos/cartucho-16bits.svg');
+    expect(existsSync('dist/llavero/cartucho-8bits/index.html')).toBe(true);
+  });
+  it('la portada tiene la pantalla de START y las tarjetas llevan slug', () => {
+    const html = leer('index.html');
+    expect(html).toContain('id="pantalla-start"');
+    expect((html.match(/data-slug="/g) ?? []).length).toBeGreaterThan(10);
+  });
+});
+
 describe.skipIf(!hayDist)('etapa 4: salida', () => {
   it('sitemap, robots y Open Graph con PNG', () => {
     expect(existsSync('dist/sitemap-index.xml')).toBe(true);

@@ -1,6 +1,34 @@
 [
-  { "para": "Tu papá chavoruco", "texto": "Casete o control retro. Le va a contar a todos cómo era antes.", "productos": ["casete", "control-retro"] },
-  { "para": "Tu compa otaku", "texto": "Máscara oni o ramen, con chip a su playlist.", "productos": ["mascara-oni", "ramen"] },
-  { "para": "Tu perro o gato", "texto": "Placa con tu teléfono. Con chip, guarda más datos.", "productos": ["placa-huella", "hueso"] },
-  { "para": "La mochila del niño", "texto": "Nombre pixel y el teléfono de mamá o papá.", "productos": ["nombre-pixel"] }
+  {
+    "para": "Tu papá chavoruco",
+    "texto": "Un cartucho 8 bits con su nombre en la etiqueta. Le va a contar a todos cómo era antes.",
+    "productos": [
+      "cartucho-8bits",
+      "casete",
+      "control-retro"
+    ]
+  },
+  {
+    "para": "Tu compa otaku",
+    "texto": "Máscara oni o ramen, con chip a su playlist.",
+    "productos": [
+      "mascara-oni",
+      "ramen"
+    ]
+  },
+  {
+    "para": "Tu perro o gato",
+    "texto": "Placa con tu teléfono. Con chip, guarda más datos.",
+    "productos": [
+      "placa-huella",
+      "hueso"
+    ]
+  },
+  {
+    "para": "La mochila del niño",
+    "texto": "Nombre pixel y el teléfono de mamá o papá.",
+    "productos": [
+      "nombre-pixel"
+    ]
+  }
 ]

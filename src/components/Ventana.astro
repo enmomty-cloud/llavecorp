@@ -6,11 +6,13 @@ interface Props {
   class?: string;
   id?: string;
   nivelTitulo?: 'div' | 'h2' | 'h3';
+  datos?: Record<string, string>;
 }
-const { titulo, tono = 'cian', class: clase = '', id, nivelTitulo = 'div' } = Astro.props;
+const { titulo, tono = 'cian', class: clase = '', id, nivelTitulo = 'div', datos = {} } = Astro.props;
 const Titulo = nivelTitulo;
+const atributosDatos = Object.fromEntries(Object.entries(datos).map(([k, v]) => [`data-${k}`, v]));
 ---
-<article class:list={['ventana', clase]} id={id}>
+<article class:list={['ventana', clase]} id={id} {...atributosDatos}>
   <div class:list={['ventana__titulo', tono !== 'cian' && `ventana__titulo--${tono}`]}>
     <Titulo style="font: inherit; margin: 0">{titulo}</Titulo>
     <span class="ventana__botones" aria-hidden="true"><span></span><span></span></span>

@@ -39,6 +39,7 @@ const fotosTaller = taller as { src: string; alt: string }[];
         <p class="hero__lema">Impresos en 3D aquí en {marca.ciudad}. Con chip NFC si quieres que hagan algo más que colgar.</p>
         <p class="pixel hero__desde">Desde ${desde}</p>
         <BotonStart href="#catalogo" />
+        <p id="start-aviso" class="hero__aviso" role="status" hidden></p>
       </div>
       <div class="hero__logo"><Logo alto={150} /></div>
     </div>
@@ -198,6 +199,18 @@ const fotosTaller = taller as { src: string; alt: string }[];
   <div slot="flotante" class="btn-flotante">
     <BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" class="btn btn--wa" />
   </div>
+
+  <div slot="flotante" id="pantalla-start" class="start-pantalla scanlines" hidden aria-live="assertive">
+    <div class="start-pantalla__cartucho" aria-hidden="true">
+      <svg viewBox="0 0 64 80" width="96" height="120" shape-rendering="crispEdges">
+        <rect x="4" y="0" width="56" height="76" fill="var(--gb-3)" /><rect x="8" y="4" width="48" height="68" fill="var(--gb-1)" />
+        <rect x="16" y="12" width="32" height="28" fill="var(--magenta)" /><rect x="20" y="16" width="24" height="6" fill="var(--fondo)" /><rect x="20" y="26" width="16" height="6" fill="var(--fondo)" />
+        <rect x="12" y="56" width="40" height="12" fill="var(--gb-0)" />
+      </svg>
+    </div>
+    <p class="pixel start-pantalla__linea" data-linea>PLAYER 1</p>
+    <p class="start-pantalla__pie">{marca.marca} · {marca.lema}</p>
+  </div>
 </Base>
 
 <style>
@@ -220,4 +233,6 @@ const fotosTaller = taller as { src: string; alt: string }[];
   @media (min-width: 760px) { .colec { grid-template-columns: auto 1fr; } }
   .taller-vacio__cuerpo { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
   .taller-foto { margin: 0; border: 3px solid var(--borde); box-shadow: var(--sombra); }
+  .hero__aviso { margin-top: .75rem; font-size: .9rem; color: var(--tinta-suave); }
 </style>
+<script src="../scripts/start.ts"></script>
