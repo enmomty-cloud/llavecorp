@@ -31,6 +31,7 @@ export function beep(freq: number, ms: number, cuando = 0): void {
 export function sonidoStart(): void { beep(660, 90); beep(880, 140, 0.1); }
 export function sonidoPowerUp(): void { [523, 659, 784, 1047].forEach((f, i) => beep(f, 120, i * 0.09)); }
 export function sonidoToque(): void { beep(440, 50); }
+export function sonidoGameOver(): void { [392, 330, 262, 196].forEach((f, i) => beep(f, 160, i * 0.14)); }
 
 function iniciar() {
   const boton = document.querySelector<HTMLButtonElement>('[data-toggle-sonido]');
@@ -50,6 +51,8 @@ function iniciar() {
   });
   document.addEventListener('llavecorp:powerup', () => { if (encendido()) sonidoPowerUp(); });
   document.addEventListener('llavecorp:easter', () => { if (encendido()) sonidoPowerUp(); });
+  document.addEventListener('llavecorp:toque', () => { if (encendido()) sonidoToque(); });
+  document.addEventListener('llavecorp:gameover', () => { if (encendido()) sonidoGameOver(); });
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);

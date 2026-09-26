@@ -171,16 +171,31 @@ const promo = marca.promocion;
     <BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" class="btn btn--wa" />
   </div>
 
-  <div slot="flotante" id="pantalla-start" class="start-pantalla scanlines" hidden aria-live="assertive">
-    <div class="start-pantalla__cartucho" aria-hidden="true">
-      <svg viewBox="0 0 64 80" width="96" height="120" shape-rendering="crispEdges">
-        <rect x="4" y="0" width="56" height="76" fill="var(--gb-3)" /><rect x="8" y="4" width="48" height="68" fill="var(--gb-1)" />
-        <rect x="16" y="12" width="32" height="28" fill="var(--rojo)" /><rect x="20" y="16" width="24" height="6" fill="var(--fondo)" /><rect x="20" y="26" width="16" height="6" fill="var(--fondo)" />
-        <rect x="12" y="56" width="40" height="12" fill="var(--gb-0)" />
-      </svg>
+  <div slot="flotante" id="pantalla-start" class="start-pantalla scanlines" hidden role="dialog" aria-label="La víbora: come cápsulas, no choques">
+    <div class="snake">
+      <div class="snake__cab">
+        <span class="pixel">SELLOS: <b data-snake-score>0</b></span>
+        <button class="btn btn--fantasma btn--chico" type="button" data-snake-skip>Saltar</button>
+      </div>
+      <canvas data-snake width="320" height="320" aria-label="Tablero de la víbora"></canvas>
+      <p class="snake__ayuda" data-snake-ayuda>Flechas, WASD o desliza el dedo. Come cápsulas, no choques.</p>
+      <div class="snake__dpad" aria-label="Controles">
+        <button type="button" data-dir="up" aria-label="Arriba">▲</button>
+        <div>
+          <button type="button" data-dir="left" aria-label="Izquierda">◀</button>
+          <button type="button" data-dir="down" aria-label="Abajo">▼</button>
+          <button type="button" data-dir="right" aria-label="Derecha">▶</button>
+        </div>
+      </div>
+      <div class="snake__fin" data-snake-fin hidden>
+        <p class="pixel snake__gameover">GAME OVER</p>
+        <p data-snake-resumen></p>
+        <div class="acciones">
+          <button class="btn btn--start" type="button" data-snake-otra>Otra vez</button>
+          <button class="btn" type="button" data-snake-continuar>Ir al catálogo</button>
+        </div>
+      </div>
     </div>
-    <p class="pixel start-pantalla__linea" data-linea>PLAYER 1</p>
-    <p class="start-pantalla__pie">{marca.marca} · {marca.lema}</p>
   </div>
 </Base>
 

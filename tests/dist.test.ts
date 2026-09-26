@@ -93,6 +93,8 @@ describe.skipIf(!hayDist)('cartuchos, START y botín', () => {
   it('la portada tiene la pantalla de START y las tarjetas llevan slug', () => {
     const html = leer('index.html');
     expect(html).toContain('id="pantalla-start"');
+    expect(html).toContain('data-snake');
+    expect(html).toContain('GAME OVER');
     expect((html.match(/data-slug="/g) ?? []).length).toBeGreaterThan(10);
   });
 });
