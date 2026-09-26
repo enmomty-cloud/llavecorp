@@ -83,7 +83,9 @@ function iniciar() {
   const ayuda = pantalla.querySelector<HTMLElement>('[data-snake-ayuda]')!;
 
   const cerrar = () => { juego.parar(); pantalla.hidden = true; document.body.style.overflow = ''; };
-  const continuar = () => { cerrar(); destino.scrollIntoView({ behavior: 'auto', block: 'start' }); };
+  // Salto instantáneo al inicio del catálogo: leer la posición después de cerrar fuerza el reflujo con el body ya desbloqueado.
+  const irAlCatalogo = () => { const top = destino.getBoundingClientRect().top + window.scrollY; window.scrollTo({ top, behavior: 'instant' as ScrollBehavior }); };
+  const continuar = () => { cerrar(); irAlCatalogo(); };
 
   const juego = new Vibora(canvas, puntos => {
     fin.hidden = false;
@@ -105,7 +107,7 @@ function iniciar() {
 
   boton.addEventListener('click', e => {
     e.preventDefault();
-    if (reducido()) { destino.scrollIntoView(); return; }
+    if (reducido()) { irAlCatalogo(); return; }
     abrir();
   });
 
