@@ -1,7 +1,8 @@
 /* ---------- Cabecera y pie ---------- */
-.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .75rem; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: .75rem 1rem; padding-block: .75rem; flex-wrap: wrap; }
 .cabecera__logo { display: inline-flex; text-decoration: none; }
-.nav { display: flex; gap: .25rem 1rem; flex-wrap: wrap; justify-content: flex-end; font-family: var(--fuente-pixel); font-size: .55rem; }
+.nav { display: flex; gap: .25rem 1.1rem; justify-content: flex-end; font-family: var(--fuente-pixel); font-size: .55rem; white-space: nowrap; }
+@media (max-width: 599px) { .nav { width: 100%; justify-content: space-between; gap: .5rem; font-size: .5rem; } }
 .nav a { text-decoration: none; padding: .5rem 0; }
 .nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--magenta); text-decoration-thickness: 3px; }
 
@@ -23,6 +24,7 @@
 .ventana__botones { display: flex; gap: .3rem; flex: none; }
 .ventana__botones span { width: .75rem; height: .75rem; border: 2px solid var(--sobre-acento); background: var(--superficie); }
 .ventana__cuerpo { padding: 1rem; }
+@media (max-width: 599px) { .tarjeta .ventana__cuerpo { padding: .6rem; } .tarjeta .btn--chico { padding-inline: .5rem; } }
 .ventana__cuerpo > :last-child { margin-bottom: 0; }
 
 /* ---------- Botones ---------- */
@@ -78,7 +80,7 @@
 /* ---------- Fichas del hero (selección de personaje) ---------- */
 .fichas { display: flex; gap: .75rem; overflow-x: auto; padding: .5rem .25rem 1rem; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .ficha { flex: 0 0 132px; scroll-snap-align: start; text-decoration: none; text-align: center; }
-.ficha__img { aspect-ratio: 1; border: 3px solid var(--borde); background: var(--superficie); box-shadow: var(--sombra); border-radius: var(--radio); overflow: hidden; margin-bottom: .5rem; }
+.ficha__img { display: block; aspect-ratio: 1; border: 3px solid var(--borde); background: var(--superficie); box-shadow: var(--sombra); border-radius: var(--radio); overflow: hidden; margin-bottom: .5rem; }
 .ficha__img img { width: 100%; height: 100%; object-fit: cover; }
 .ficha__nombre { font-family: var(--fuente-pixel); font-size: .5rem; line-height: 1.4; }
 .ficha:hover .ficha__img, .ficha:focus-visible .ficha__img { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--magenta); }

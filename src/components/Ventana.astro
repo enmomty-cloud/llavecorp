@@ -1,0 +1,19 @@
+---
+// Ventana estilo sistema operativo de los 90s: barra de título con botones decorativos y cuerpo.
+interface Props {
+  titulo: string;
+  tono?: 'cian' | 'magenta' | 'amarillo' | 'verde';
+  class?: string;
+  id?: string;
+  nivelTitulo?: 'div' | 'h2' | 'h3';
+}
+const { titulo, tono = 'cian', class: clase = '', id, nivelTitulo = 'div' } = Astro.props;
+const Titulo = nivelTitulo;
+---
+<article class:list={['ventana', clase]} id={id}>
+  <div class:list={['ventana__titulo', tono !== 'cian' && `ventana__titulo--${tono}`]}>
+    <Titulo style="font: inherit; margin: 0">{titulo}</Titulo>
+    <span class="ventana__botones" aria-hidden="true"><span></span><span></span></span>
+  </div>
+  <div class="ventana__cuerpo"><slot /></div>
+</article>

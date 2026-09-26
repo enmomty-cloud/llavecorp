@@ -1,0 +1,6 @@
+---
+import { waLink, type TipoMensaje, type DatosMensaje } from '../lib/whatsapp';
+interface Props { tipo: TipoMensaje; datos?: DatosMensaje; texto: string; class?: string }
+const { tipo, datos, texto, class: clase = 'btn btn--wa' } = Astro.props;
+---
+<a class={clase} href={waLink(tipo, datos)} target="_blank" rel="noopener">{texto}</a>

@@ -1,0 +1,10 @@
+---
+import marca from '../config/marca.json';
+interface Props { colores?: { nombre: string; hex: string }[] }
+const { colores = marca.colores_disponibles } = Astro.props;
+---
+<ul class="paleta" aria-label="Colores de filamento disponibles">
+  {colores.map(c => (
+    <li class="paleta__color" style={`background:${c.hex}`} title={c.nombre}><span class="visualmente-oculto">{c.nombre}</span></li>
+  ))}
+</ul>

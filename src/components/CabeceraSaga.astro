@@ -1,0 +1,15 @@
+---
+import type { Saga } from '../lib/catalogo';
+interface Props { saga: Saga; enlace?: boolean }
+const { saga, enlace = true } = Astro.props;
+---
+<header class="saga-cab">
+  <div>
+    <h2 id={`saga-${saga.slug}`}>{enlace ? <a href={`/saga/${saga.slug}`} style="text-decoration:none">{saga.nombre}</a> : saga.nombre}</h2>
+    <p class="seccion__sub" style="margin-top:-.25rem">{saga.descripcion}</p>
+  </div>
+  {enlace && <a class="btn btn--fantasma btn--chico" href={`/saga/${saga.slug}`}>Ver toda la saga</a>}
+</header>
+<style>
+  .saga-cab { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+</style>

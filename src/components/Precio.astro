@@ -1,0 +1,8 @@
+---
+interface Props { basico: number; nfc: number }
+const { basico, nfc } = Astro.props;
+---
+<p class="precio">
+  <span>${basico}</span>
+  {nfc > 0 && <span class="precio__nfc">con NFC <b>${nfc}</b></span>}
+</p>

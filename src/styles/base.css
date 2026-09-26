@@ -36,11 +36,12 @@ button { font: inherit; color: inherit; }
 
 .contenedor { width: 100%; max-width: var(--ancho-max); margin-inline: auto; padding-inline: var(--gutter); }
 .seccion { padding-block: clamp(2.25rem, 6vw, 4.5rem); }
-.seccion + .seccion { padding-top: 0; }
+
 .seccion__titulo { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .seccion__sub { color: var(--tinta-suave); margin: -.5rem 0 1.25rem; }
 
-.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); }
+@media (min-width: 600px) { .grid { gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
 .grid--ancho { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
 
 .visualmente-oculto {

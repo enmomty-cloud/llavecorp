@@ -1,0 +1,5 @@
+---
+interface Props { href: string; texto?: string; class?: string }
+const { href, texto = 'Presiona START', class: clase = '' } = Astro.props;
+---
+<a class:list={['btn', 'btn--start', 'parpadea', clase]} href={href}>{texto}</a>

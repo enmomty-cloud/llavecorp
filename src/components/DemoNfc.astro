@@ -1,0 +1,23 @@
+---
+// Animación: un celular se acerca al llavero y salen ondas. Solo CSS; se detiene con prefers-reduced-motion.
+---
+<svg class="nfc-demo" viewBox="0 0 240 120" width="240" height="120" shape-rendering="crispEdges" aria-hidden="true">
+  <!-- llavero -->
+  <g transform="translate(24 36)">
+    <rect x="0" y="0" width="64" height="48" rx="24" fill="var(--tinta)" />
+    <rect x="16" y="14" width="12" height="4" fill="var(--fondo)" /><rect x="16" y="26" width="12" height="4" fill="var(--fondo)" />
+    <rect x="16" y="18" width="4" height="8" fill="var(--fondo)" /><rect x="28" y="18" width="12" height="4" fill="var(--fondo)" /><rect x="36" y="22" width="4" height="4" fill="var(--fondo)" />
+    <circle cx="8" cy="24" r="3" fill="none" stroke="var(--amarillo)" stroke-width="2" />
+  </g>
+  <!-- ondas -->
+  <g class="nfc-demo__onda" fill="var(--verde-nfc)">
+    <rect x="100" y="52" width="6" height="16" /><rect x="112" y="44" width="6" height="32" /><rect x="124" y="36" width="6" height="48" />
+  </g>
+  <!-- celular -->
+  <g transform="translate(150 12)"><g class="nfc-demo__cel">
+    <rect x="0" y="0" width="60" height="96" rx="8" fill="var(--tinta)" />
+    <rect x="6" y="10" width="48" height="72" fill="var(--cian)" />
+    <rect x="24" y="4" width="12" height="3" fill="var(--fondo)" />
+    <rect x="26" y="86" width="8" height="6" fill="var(--fondo)" />
+  </g></g>
+</svg>

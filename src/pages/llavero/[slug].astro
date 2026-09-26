@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import Marca from '../../components/Marca.astro';
+import Ventana from '../../components/Ventana.astro';
+import Precio from '../../components/Precio.astro';
+import Paleta from '../../components/Paleta.astro';
+import EtiquetaEditable from '../../components/EtiquetaEditable.astro';
+import BotonWhatsApp from '../../components/BotonWhatsApp.astro';
+import { getProductos, getSaga } from '../../lib/catalogo';
+
+export function getStaticPaths() {
+  return getProductos().map(p => ({ params: { slug: p.slug }, props: { producto: p } }));
+}
+const { producto: p } = Astro.props;
+const saga = getSaga(p.saga)!;
+const img = p.imagen || `/img/placeholders/${p.saga}.svg`;
+const tipo = p.editable ? 'editable' : 'producto';
+const esCapsula = p.saga === 'capsula';
+---
+<Base titulo={p.nombre} descripcion={`${p.descripcion} Desde $${p.precio_basico}.`} imagenOg={img}>
+  <Marca slot="logo" />
+  <section class="contenedor seccion ficha-prod">
+    <div class="ficha-prod__img tarjeta__img"><img src={img} alt={`Llavero ${p.nombre}`} width="400" height="400" /></div>
+    <div>
+      <p class="seccion__sub" style="margin:0 0 .5rem"><a href={`/saga/${saga.slug}`}>{saga.nombre}</a></p>
+      <h1>{p.nombre}</h1>
+      <p>{p.descripcion}</p>
+      <div class="tarjeta__meta" style="margin-bottom:1rem">
+        <span class="etiqueta etiqueta--neutra">{p.tamano}</span>
+        {p.editable ? <EtiquetaEditable producto={p} /> : <span class="etiqueta etiqueta--neutra">{p.colores} {p.colores === 1 ? 'color' : 'colores'}</span>}
+        {p.precio_nfc > 0 && <span class="etiqueta etiqueta--nfc">Con poder NFC</span>}
+        {!p.disponible && <span class="etiqueta etiqueta--agotado">Agotado</span>}
+      </div>
+      <Precio basico={p.precio_basico} nfc={p.precio_nfc} />
+      {p.disponible ? (
+        <div class="acciones" style="margin-top:1rem">
+          <BotonWhatsApp tipo={tipo} datos={{ nombre: p.nombre, variante: 'basico' }} texto="Lo quiero" />
+          {p.precio_nfc > 0 && <BotonWhatsApp tipo={tipo} datos={{ nombre: p.nombre, variante: 'nfc' }} texto="Con NFC" class="btn btn--fantasma" />}
+        </div>
+      ) : (
+        <p style="margin-top:1rem">Se acabó por ahora. Escríbenos y te avisamos cuando vuelva.</p>
+      )}
+      {esCapsula && <p style="margin-top:1rem">No sabes cuál te toca. Esa es la gracia.</p>}
+    </div>
+  </section>
+
+  {p.editable && (
+    <section class="contenedor seccion" aria-labelledby="pers-titulo">
+      <h2 id="pers-titulo">Hazlo tuyo</h2>
+      <div class="grid grid--ancho">
+        <Ventana titulo="Editable">
+          <p>Este diseño se puede adaptar{p.texto_editable && p.colores_editables ? ': tu nombre o texto, y cambio de colores' : p.texto_editable ? ': tu nombre o texto' : ': cambio de colores'}.</p>
+          <p>Me escribes por WhatsApp con el diseño, el nombre y los colores que quieres. Yo lo edito y te mando una foto de cómo queda antes de imprimirlo.</p>
+        </Ventana>
+        {p.colores_editables && (
+          <Ventana titulo={`${p.colores} ${p.colores === 1 ? 'color' : 'colores'}`} tono="amarillo">
+            <p>Este diseño trae {p.colores} {p.colores === 1 ? 'color' : 'colores'} y ese número no cambia: puedes elegir cuáles, no cuántos. Máximo cuatro por llavero.</p>
+            <Paleta />
+          </Ventana>
+        )}
+      </div>
+    </section>
+  )}
+
+  {p.precio_nfc > 0 && (
+    <section class="contenedor seccion" aria-labelledby="nfc-titulo">
+      <Ventana titulo="Con poder NFC" tono="verde" nivelTitulo="h2" id="nfc-titulo">
+        <p>Con chip, este llavero puede abrir tu Wi-Fi, tu WhatsApp, tus redes o los datos de tu mascota al acercarlo a un celular. Tú lo programas y lo cambias cuando quieras.</p>
+        <a class="btn" href="/activa">Ver cómo se activa</a>
+      </Ventana>
+    </section>
+  )}
+
+  <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" /></div>
+</Base>
+
+<style>
+  .ficha-prod { display: grid; gap: 1.5rem; }
+  @media (min-width: 700px) { .ficha-prod { grid-template-columns: minmax(240px, 400px) 1fr; align-items: start; } }
+  .ficha-prod__img { box-shadow: var(--sombra); }
+</style>

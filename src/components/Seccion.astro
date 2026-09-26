@@ -1,0 +1,22 @@
+---
+interface Props {
+  id: string;
+  titulo?: string;
+  subtitulo?: string;
+  fondo?: 'halftone' | 'speedlines' | 'none';
+  class?: string;
+}
+const { id, titulo, subtitulo, fondo = 'none', class: clase = '' } = Astro.props;
+---
+<section id={id} class:list={['seccion', fondo !== 'none' && fondo, clase]} aria-labelledby={titulo ? `${id}-titulo` : undefined}>
+  <div class="contenedor">
+    {titulo && (
+      <div class="seccion__titulo">
+        <slot name="emote" />
+        <h2 id={`${id}-titulo`} style="margin:0">{titulo}</h2>
+      </div>
+    )}
+    {subtitulo && <p class="seccion__sub">{subtitulo}</p>}
+    <slot />
+  </div>
+</section>

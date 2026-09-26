@@ -1,12 +1,142 @@
 ---
 import Base from '../layouts/Base.astro';
+import Marca from '../components/Marca.astro';
+import Logo from '../components/Logo.astro';
+import Mascota from '../components/Mascota.astro';
+import Seccion from '../components/Seccion.astro';
+import Ventana from '../components/Ventana.astro';
+import BotonStart from '../components/BotonStart.astro';
+import BotonWhatsApp from '../components/BotonWhatsApp.astro';
+import TarjetaProducto from '../components/TarjetaProducto.astro';
+import CabeceraSaga from '../components/CabeceraSaga.astro';
+import Paleta from '../components/Paleta.astro';
+import Emote from '../components/Emote.astro';
+import DemoNfc from '../components/DemoNfc.astro';
 import marca from '../config/marca.json';
+import { destacados, getSagas, productosPorSaga, precioDesde } from '../lib/catalogo';
+import { getTianguisActivos } from '../lib/tianguis';
+
+const fichas = destacados();
+const sagas = getSagas();
+const desde = precioDesde();
+const puestos = getTianguisActivos();
+const redes = Object.entries(marca.redes).filter(([, url]) => url);
 ---
-<Base titulo={marca.lema} descripcion="Llaveros impresos en 3D con chip NFC, estilo retro y anime. Pide por WhatsApp.">
-  <span slot="logo" class="pixel" style="font-size:.7rem">{marca.marca}</span>
-  <section class="contenedor seccion">
-    <h1>Elige tu llavero</h1>
-    <p>{marca.lema}</p>
-    <a class="btn btn--start parpadea" href="#catalogo">Presiona START</a>
+<Base titulo={marca.lema} descripcion={`Llaveros impresos en 3D con chip NFC, estilo retro y anime, desde $${desde}. Pide por WhatsApp o búscanos en el tianguis.`}>
+  <Marca slot="logo" />
+
+  <section id="inicio" class="hero scanlines speedlines" aria-labelledby="inicio-titulo">
+    <div class="contenedor hero__cuerpo">
+      <div class="hero__texto">
+        <Mascota estado="saluda" tamano={96} alt={`${marca.mascota}, la mascota de ${marca.marca}, saludando`} />
+        <h1 id="inicio-titulo">Elige tu llavero</h1>
+        <p class="hero__lema">Impresos en 3D aquí en {marca.ciudad}. Con chip NFC si quieres que hagan algo más que colgar.</p>
+        <p class="pixel hero__desde">Desde ${desde}</p>
+        <BotonStart href="#catalogo" />
+      </div>
+      <div class="hero__logo"><Logo alto={150} /></div>
+    </div>
+    <div class="contenedor">
+      <p class="pixel" style="font-size:.5rem;margin-bottom:.25rem">Selecciona tu personaje</p>
+      <div class="fichas">
+        {fichas.map(p => (
+          <a class="ficha" href={`/llavero/${p.slug}`}>
+            <span class="ficha__img"><img src={p.imagen || `/img/placeholders/${p.saga}.svg`} alt="" width="132" height="132" loading="lazy" /></span>
+            <span class="ficha__nombre">{p.nombre}</span>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
+
+  <Seccion id="nfc" titulo="Con poder NFC" subtitulo="Acércalo al celular y pasa algo. Sin pilas, sin app rara, sin que le reces.">
+    <Emote slot="emote" tipo="brillo" />
+    <div class="nfc">
+      <Ventana titulo="Así funciona" tono="verde"><DemoNfc /></Ventana>
+      <Ventana titulo="Tres ideas" tono="verde">
+        <ul class="lista-poder">
+          <li><b>Wi-Fi de tu casa.</b> Las visitas tocan el llavero y ya están conectadas.</li>
+          <li><b>Tu WhatsApp o tus redes.</b> Lo acercan y te escriben, sin dictar números.</li>
+          <li><b>Placa de tu mascota.</b> Si se pierde, quien la encuentre ve tu teléfono.</li>
+        </ul>
+        <p>Tú lo programas desde tu cel las veces que quieras. Te enseñamos paso a paso.</p>
+        <a class="btn" href="/activa">Ver el instructivo</a>
+      </Ventana>
+    </div>
+  </Seccion>
+
+  <Seccion id="catalogo" titulo="Catálogo por sagas" subtitulo="Cada diseño tiene su precio según tamaño. Todos se piden por WhatsApp.">
+    {sagas.map(s => (
+      <div class="saga" aria-labelledby={`saga-${s.slug}`}>
+        <CabeceraSaga saga={s} />
+        <div class="grid">{productosPorSaga(s.slug).map(p => <TarjetaProducto producto={p} />)}</div>
+      </div>
+    ))}
+  </Seccion>
+
+  <Seccion id="hazlo-tuyo" titulo="Hazlo tuyo" subtitulo="Tres formas de personalizar, sin letra chiquita." fondo="halftone">
+    <Emote slot="emote" tipo="sorpresa" />
+    <div class="grid grid--ancho">
+      <Ventana titulo="Editable">
+        <p>Los diseños con la etiqueta <span class="etiqueta etiqueta--editable">Editable</span> se pueden adaptar: tu nombre o texto, y cambio de colores.</p>
+        <p>Me escribes por WhatsApp con el diseño, el nombre y los colores que quieres. Yo lo edito y te mando una foto de cómo queda antes de imprimirlo.</p>
+      </Ventana>
+      <Ventana titulo="Colores" tono="amarillo">
+        <p>Cada llavero se imprime con máximo cuatro colores. Cada diseño ya trae su número de colores, y ese número no cambia: puedes elegir cuáles, no cuántos.</p>
+        <p>Un diseño de dos colores sigue siendo de dos colores, solo que con los que tú escojas. Estos son los que tengo:</p>
+        <Paleta />
+      </Ventana>
+      <Ventana titulo="Diseño nuevo" tono="magenta">
+        <p>Si quieres algo que no está en el catálogo, se cotiza aparte. El precio depende del tamaño y del número de colores.</p>
+        <p>Mándame la idea o una referencia por WhatsApp y te digo cuánto y cuándo.</p>
+        <BotonWhatsApp tipo="nuevo" texto="Cotizar diseño nuevo" />
+      </Ventana>
+    </div>
+  </Seccion>
+
+  <Seccion id="donde" titulo="¿Dónde estamos esta semana?" subtitulo="Ven al puesto, tócalos y llévatelo en la mano.">
+    <Emote slot="emote" tipo="gota" />
+    {puestos.length ? (
+      <ul class="puestos">
+        {puestos.map(p => (
+          <li class="puesto">
+            <span class="puesto__dia">{p.dia}</span>
+            <span class="puesto__lugar">{p.lugar}{p.zona && `, ${p.zona}`}</span>
+            <span class="puesto__detalle">{p.horario}{p.nota && ` · ${p.nota}`}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>Esta semana descansamos. Escríbenos y te decimos dónde caemos.</p>
+    )}
+    <div class="acciones">
+      <BotonWhatsApp tipo="avisame" texto="Avísame cuando andes cerca" />
+      <a class="btn btn--fantasma" href="/donde">Ver todos los puestos</a>
+    </div>
+  </Seccion>
+
+  <Fragment slot="pie">
+    {redes.map(([red, url]) => <a href={url} target="_blank" rel="noopener" style="text-transform:capitalize">{red}</a>)}
+    <a href="/mayoreo">Vende con nosotros</a>
+    <a href="/activa">Activa tu llavero</a>
+  </Fragment>
+
+  <div slot="flotante" class="btn-flotante">
+    <BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" class="btn btn--wa" />
+  </div>
 </Base>
+
+<style>
+  .hero { padding-block: clamp(1.5rem, 5vw, 3.5rem) 1rem; border-bottom: 3px solid var(--borde); }
+  .hero__cuerpo { display: grid; gap: 1.5rem; align-items: center; margin-bottom: 1.5rem; }
+  @media (min-width: 760px) { .hero__cuerpo { grid-template-columns: 1.2fr 1fr; } .hero__logo { justify-self: end; } }
+  .hero__logo { display: none; }
+  @media (min-width: 760px) { .hero__logo { display: block; } }
+  .hero__lema { font-size: 1.1rem; max-width: 40ch; }
+  .hero__desde { font-size: .8rem; color: var(--magenta); margin-bottom: 1.25rem; }
+  .nfc { display: grid; gap: 1.25rem; }
+  @media (min-width: 760px) { .nfc { grid-template-columns: auto 1fr; align-items: start; } }
+  .lista-poder { padding-left: 1.1rem; margin: 0 0 1rem; }
+  .lista-poder li { margin-bottom: .5rem; }
+  .saga + .saga { margin-top: 2.5rem; }
+</style>

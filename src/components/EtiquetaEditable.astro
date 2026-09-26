@@ -1,0 +1,9 @@
+---
+import type { Producto } from '../lib/catalogo';
+interface Props { producto: Producto }
+const { producto: p } = Astro.props;
+const que = [p.texto_editable && 'tu nombre o texto', p.colores_editables && 'colores'].filter(Boolean).join(' y ');
+---
+<span class="etiqueta etiqueta--editable">Editable</span>
+<span class="etiqueta etiqueta--neutra">{p.colores} {p.colores === 1 ? 'color' : 'colores'}</span>
+<span class="visualmente-oculto">Se puede cambiar {que}; cambia cuáles colores, no cuántos.</span>

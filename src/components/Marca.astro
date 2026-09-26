@@ -1,0 +1,11 @@
+---
+// Marca para la cabecera: emblema + nombre en pixel. El logo con letras completo es ilegible a tamaño de cabecera.
+import Logo from './Logo.astro';
+import marca from '../config/marca.json';
+interface Props { alto?: number }
+const { alto = 36 } = Astro.props;
+---
+<span class="marca" style="display:inline-flex;align-items:center;gap:.6rem">
+  <Logo soloEmblema alto={alto} />
+  <span class="pixel" style="font-size:.7rem">{marca.marca}</span>
+</span>

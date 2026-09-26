@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Marca from '../../components/Marca.astro';
+import CabeceraSaga from '../../components/CabeceraSaga.astro';
+import TarjetaProducto from '../../components/TarjetaProducto.astro';
+import BotonWhatsApp from '../../components/BotonWhatsApp.astro';
+import { getSagas, productosPorSaga } from '../../lib/catalogo';
+
+export function getStaticPaths() {
+  return getSagas().map(s => ({ params: { slug: s.slug }, props: { saga: s } }));
+}
+const { saga } = Astro.props;
+const productos = productosPorSaga(saga.slug);
+---
+<Base titulo={saga.nombre} descripcion={saga.descripcion} imagenOg={`/img/placeholders/${saga.slug}.svg`}>
+  <Marca slot="logo" />
+  <section class="contenedor seccion" aria-labelledby={`saga-${saga.slug}`}>
+    <CabeceraSaga saga={saga} enlace={false} />
+    {productos.length ? (
+      <div class="grid">{productos.map(p => <TarjetaProducto producto={p} />)}</div>
+    ) : (
+      <p>Esta saga está en producción. Escríbenos y te avisamos cuando salga.</p>
+    )}
+    <p style="margin-top:1.5rem"><a href="/#catalogo">Volver al catálogo</a></p>
+  </section>
+  <div slot="flotante" class="btn-flotante"><BotonWhatsApp tipo="hola" texto="Continuar ▶ WhatsApp" /></div>
+</Base>
