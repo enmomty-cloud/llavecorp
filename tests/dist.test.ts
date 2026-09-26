@@ -87,6 +87,8 @@ describe.skipIf(!hayDist)('cartuchos, START y botín', () => {
     expect(html).toContain('data-slug="cartucho-8bits"');
     expect(html).toContain('/img/productos/cartucho-16bits.svg');
     expect(existsSync('dist/llavero/cartucho-8bits/index.html')).toBe(true);
+    expect(existsSync('dist/saga/aventura/index.html')).toBe(true);
+    expect(html).toContain('data-slug="cartucho-dorado"');
   });
   it('la portada tiene la pantalla de START y las tarjetas llevan slug', () => {
     const html = leer('index.html');

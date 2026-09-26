@@ -9,6 +9,15 @@
     ]
   },
   {
+    "para": "Tu compa gamer",
+    "texto": "El cartucho dorado o la espada pixel. Va a entender la referencia sin que se la expliques.",
+    "productos": [
+      "cartucho-dorado",
+      "espada-pixel",
+      "cofre"
+    ]
+  },
+  {
     "para": "Tu compa otaku",
     "texto": "Máscara oni o ramen, con chip a su playlist.",
     "productos": [
