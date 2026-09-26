@@ -104,7 +104,7 @@ render('cartuchos', 1080, 1080, `
   <g transform="translate(120 330) scale(1.15)">${producto('cartucho-8bits')}</g>
   <g transform="translate(560 360) scale(1.15)">${producto('cartucho-16bits')}</g>
   <text x="90" y="800" ${PIX} font-size="34" fill="${C.tinta}">CARTUCHOS 8 Y 16 BITS</text>
-  <text x="90" y="850" ${TXT} font-size="30" fill="${C.gris}">Con tu nombre en la etiqueta. Con chip NFC si quieres.</text>
+  <text x="90" y="850" ${TXT} font-size="30" fill="${C.gris}">El de 16 bits con tu nombre en la etiqueta. Con chip NFC si quieres.</text>
   <text x="90" y="905" ${PIX} font-size="26" fill="${C.rojo}">DESDE $75</text>
   ${boton(600, 900, 390, 'LINK EN LA BIO')}`);
 

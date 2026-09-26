@@ -63,6 +63,9 @@ describe.skipIf(!hayDist)('etapa 3: conversión', () => {
     const html = leer('index.html');
     for (const id of ['promo', 'regalos', 'entregas']) expect(html).toContain(`id="${id}"`);
     expect(html).toContain('Soriana Colosio');
+    expect(html).toContain('cinco piezas');
+    expect(html).toContain('$30');
+    expect(html).toContain('uno a tres días');
     for (const id of ['vende', 'taller', 'capsula', 'coleccionista']) expect(html).not.toContain(`id="${id}"`);
     expect(html).toContain('Sello 5: llavero con tu nombre');
     expect(html).toContain('pedidos hechos desde esta página');

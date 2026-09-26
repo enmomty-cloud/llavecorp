@@ -43,7 +43,7 @@ Promoción de introducción, puede terminar sin previo aviso.
 
 **cartuchos-1080x1080**
 ```
-Llegaron los cartuchos 🎮 8 bits y 16 bits, impresos en 3D, con tu nombre o tu juego favorito en la etiqueta. Con chip NFC si quieres que además abra tu WhatsApp o tu Wi-Fi.
+Llegaron los cartuchos 🎮 8 bits y 16 bits, impresos en 3D. El de 16 bits lleva tu nombre o tu juego favorito en la etiqueta. Con chip NFC si quieres que además abra tu WhatsApp o tu Wi-Fi.
 Desde $75. Pide por WhatsApp desde la página (link en la bio).
 #llaveros #cartucho #retrogaming #monterrey #impresion3d #pixelart
 ```

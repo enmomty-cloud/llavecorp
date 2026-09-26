@@ -17,5 +17,5 @@
     <!-- argolla -->
     <circle cx="100" cy="-14" r="14" fill="none" stroke="#1a1433" stroke-width="8"/>
   </g>
-  <text x="200" y="365" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="12" fill="#1a1433">Tu nombre en la etiqueta</text>
+  <text x="200" y="365" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="12" fill="#1a1433">Tus colores en la etiqueta</text>
 </svg>

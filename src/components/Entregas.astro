@@ -1,7 +1,8 @@
 ---
-// Política de entregas: puntos gratis, domicilio y envíos. Los datos viven en src/data/entregas.json.
+// Política de entregas: puntos gratis, domicilio, envíos y tiempos. Los datos viven en src/data/entregas.json.
 import Ventana from './Ventana.astro';
 import entregas from '../data/entregas.json';
+const palabra = (n: number) => ['cero', 'una', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'][n] ?? String(n);
 ---
 <div class="grid grid--ancho">
   <Ventana titulo={`Puntos de entrega gratis · ${entregas.zona}`} tono="verde">
@@ -10,12 +11,15 @@ import entregas from '../data/entregas.json';
     </ul>
   </Ventana>
   <Ventana titulo="A domicilio" tono="amarillo">
-    <p><b>Gratis en {entregas.zona}</b> comprando {entregas.domicilio_gratis_desde} piezas o más.</p>
+    <p><b>Gratis en {entregas.zona}</b> comprando {palabra(entregas.domicilio_gratis_desde)} piezas o más. Con menos piezas cuesta <b>${entregas.domicilio_menos_piezas}</b>.</p>
     <p>{entregas.nota_domicilio}</p>
   </Ventana>
   <Ventana titulo="Otros municipios" tono="rojo">
     <p><b>${entregas.envio_area_metropolitana}</b> de envío a los demás municipios del área metropolitana de Monterrey.</p>
     <p>{entregas.nota_envio}</p>
+  </Ventana>
+  <Ventana titulo="Tiempos de entrega" tono="cian">
+    <p>{entregas.tiempos}</p>
   </Ventana>
 </div>
 <style>

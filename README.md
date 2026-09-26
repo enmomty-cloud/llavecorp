@@ -78,7 +78,7 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 
 ### Entregas y envíos: `src/data/entregas.json`
 
-`zona`, `puntos` (nombre y nota de cada punto de entrega gratis), `domicilio_gratis_desde` (piezas), `envio_area_metropolitana` (pesos), `nota_domicilio`, `nota_envio`. Se muestra en la portada y en `/donde`.
+`zona`, `puntos` (nombre y nota de cada punto de entrega gratis), `domicilio_gratis_desde` (piezas), `domicilio_menos_piezas` (pesos), `envio_area_metropolitana` (pesos), `nota_domicilio`, `nota_envio`, `tiempos`. Se muestra en la portada y en `/donde`.
 
 ### Guía de regalos: `src/data/regalos.json`
 

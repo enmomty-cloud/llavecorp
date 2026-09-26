@@ -1,11 +1,11 @@
 [
   {
     "para": "Tu papá chavoruco",
-    "texto": "Un cartucho 8 bits con su nombre en la etiqueta. Le va a contar a todos cómo era antes.",
+    "texto": "Un cartucho 16 bits con su nombre en la etiqueta. Le va a contar a todos cómo era antes.",
     "productos": [
+      "cartucho-16bits",
       "cartucho-8bits",
-      "casete",
-      "control-retro"
+      "casete"
     ]
   },
   {
