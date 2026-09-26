@@ -13,8 +13,12 @@ interface Props {
   imagenOg?: string;
 }
 const { titulo, descripcion, imagenOg = '/og/default.png' } = Astro.props;
-const url = new URL(Astro.url.pathname, Astro.site);
-const ruta = Astro.url.pathname;
+// base es '' en producción (llavecorp.com) y '/llavecorp' cuando se publica en GitHub Pages bajo subruta.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const conBase = (p: string) => (base && !p.startsWith(base + '/') && p !== base ? base + p : p);
+const url = new URL(conBase(Astro.url.pathname), Astro.site);
+const imagenOgUrl = new URL(conBase(imagenOg), Astro.site);
+const ruta = Astro.url.pathname.replace(base, '') || '/';
 const actual = (prefijo: string) => (ruta === prefijo || (prefijo !== '/' && ruta.startsWith(prefijo)) ? 'page' : undefined);
 ---
 <!doctype html>
@@ -30,14 +34,13 @@ const actual = (prefijo: string) => (ruta === prefijo || (prefijo !== '/' && rut
     <meta property="og:site_name" content={marca.marca} />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
-    <meta property="og:image" content={new URL(imagenOg, Astro.site)} />
+    <meta property="og:image" content={imagenOgUrl} />
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/fonts/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
     <script is:inline>
       // Aplica el tema guardado antes de pintar, para que no parpadee.
       try { var t = localStorage.getItem('llavecorp-tema'); if (t) document.documentElement.dataset.tema = t; } catch (e) {}

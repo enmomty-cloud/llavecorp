@@ -81,6 +81,12 @@ describe.skipIf(!hayDist)('etapa 4: salida', () => {
     expect(html).toContain('og:image');
     expect(html).toContain('/og/default.png');
   });
+  it('fuentes alojadas en el sitio, nada de Google Fonts', () => {
+    const html = leer('index.html');
+    expect(html).toContain('/fonts/press-start-2p-latin.woff2');
+    expect(html).not.toContain('fonts.googleapis.com');
+    expect(existsSync('dist/fonts/space-grotesk-latin.woff2')).toBe(true);
+  });
   it('sin analítica cuando el token está vacío', () => {
     expect(leer('index.html')).not.toContain('cloudflareinsights');
   });

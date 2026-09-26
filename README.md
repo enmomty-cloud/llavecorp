@@ -116,10 +116,18 @@ scp -r dist/ usuario@servidor:/var/www/llavecorp/dist
 
 Config de nginx en `deploy/nginx.conf` (instrucciones en el mismo archivo). Sin Node en el servidor: solo archivos.
 
+### GitHub Pages (gratis, mientras no haya dominio)
+
+Cada push a `master` corre `.github/workflows/pages.yml`: construye, prueba y publica en `https://enmomty-cloud.github.io/llavecorp/`. El script `scripts/prefijar-base.mjs` reescribe las rutas para la subruta; en el dominio propio no se usa. Cuando compres `llavecorp.com`, puedes apuntarlo a GitHub Pages (Settings, Pages, Custom domain) y quitar `BASE` del workflow.
+
 ### Cloudflare Pages o Vercel (gratis)
 
 - Framework: Astro · Comando de build: `npm run build` · Carpeta de salida: `dist`
 - Apunta el dominio `llavecorp.com` desde el panel del servicio.
+
+## Fuentes
+
+Press Start 2P y Space Grotesk están en `public/fonts/` (woff2, subconjunto latín, licencia OFL). No se carga nada de Google.
 
 ## Estructura
 
