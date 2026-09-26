@@ -10,7 +10,7 @@ Specs y plan en `docs/superpowers/`.
 
 ## Requisitos
 
-- Node 24 o más nuevo (viene con npm).
+- Node 24 o más nuevo (viene con npm). Astro 7, Vitest 5.
 
 ## Comandos
 
@@ -22,6 +22,7 @@ npm run preview      # sirve dist/ para revisarlo
 npm test             # pruebas de datos y enlaces
 npm run verificar    # build + pruebas (úsalo antes de subir)
 npm run og           # regenera la imagen de Open Graph (public/og/default.png)
+npm run csp-hash     # hash del script inline del tema, para la CSP de deploy/nginx.conf
 ```
 
 Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qué regla rompió (precio bajo el mínimo, más de 4 colores, saga inexistente, slug repetido).

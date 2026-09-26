@@ -14,6 +14,13 @@ export function fijarTema(t: Tema): void {
 }
 
 function iniciar() {
+  // Si el script inline del <head> no corrió (por ejemplo, bloqueado por una CSP), aplica aquí el tema guardado.
+  if (!document.documentElement.dataset.tema) {
+    try {
+      const guardado = localStorage.getItem(CLAVE);
+      if (guardado === 'claro' || guardado === 'noche') document.documentElement.dataset.tema = guardado;
+    } catch { /* sin almacenamiento */ }
+  }
   const boton = document.querySelector<HTMLButtonElement>('[data-toggle-tema]');
   if (!boton) return;
   const pintar = () => {
