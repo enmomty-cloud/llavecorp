@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" shape-rendering="crispEdges">
+  <defs><pattern id="h" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.4" fill="#1a1433" opacity=".18"/></pattern></defs>
+  <rect width="400" height="400" fill="#fbf4dc"/><rect width="400" height="400" fill="url(#h)"/>
+  <g fill="#1a1433" transform="translate(200 200)">
+    <circle cx="-70" cy="-40" r="28"/><circle cx="-25" cy="-80" r="28"/><circle cx="25" cy="-80" r="28"/><circle cx="70" cy="-40" r="28"/>
+    <ellipse cx="0" cy="30" rx="80" ry="65"/>
+  </g>
+  <g fill="#ff2e88" transform="translate(200 200)">
+    <circle cx="-70" cy="-40" r="14"/><circle cx="-25" cy="-80" r="14"/><circle cx="25" cy="-80" r="14"/><circle cx="70" cy="-40" r="14"/>
+    <ellipse cx="0" cy="30" rx="52" ry="42"/>
+  </g>
+  <text x="200" y="340" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="13" fill="#1a1433">Foto real muy pronto</text>
+</svg>

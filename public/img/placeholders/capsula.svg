@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" shape-rendering="crispEdges">
+  <defs><pattern id="h" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.4" fill="#1a1433" opacity=".18"/></pattern></defs>
+  <rect width="400" height="400" fill="#fbf4dc"/><rect width="400" height="400" fill="url(#h)"/>
+  <g transform="translate(200 180)">
+    <circle cx="0" cy="0" r="120" fill="#1a1433"/>
+    <path d="M-108 0 A108 108 0 0 1 108 0 Z" fill="#ff2e88"/>
+    <path d="M-108 0 A108 108 0 0 0 108 0 Z" fill="#fffaea"/>
+    <rect x="-108" y="-8" width="216" height="16" fill="#1a1433"/>
+    <rect x="-40" y="-70" width="16" height="16" fill="#fffaea"/>
+    <g fill="#1a1433"><rect x="-16" y="30" width="32" height="8"/><rect x="16" y="38" width="8" height="16"/><rect x="0" y="54" width="16" height="8"/><rect x="-4" y="62" width="8" height="8"/><rect x="-4" y="78" width="8" height="8"/></g>
+  </g>
+  <text x="200" y="340" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="13" fill="#1a1433">¿Cuál te tocará?</text>
+</svg>

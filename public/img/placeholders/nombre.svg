@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" shape-rendering="crispEdges">
+  <defs><pattern id="h" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.4" fill="#1a1433" opacity=".18"/></pattern></defs>
+  <rect width="400" height="400" fill="#fbf4dc"/><rect width="400" height="400" fill="url(#h)"/>
+  <g transform="translate(60 130)">
+    <polygon points="0,60 60,0 280,0 280,120 60,120" fill="#1a1433"/>
+    <polygon points="16,60 66,12 268,12 268,108 66,108" fill="#ffd23f"/>
+    <circle cx="52" cy="60" r="12" fill="#1a1433"/>
+    <rect x="100" y="42" width="40" height="36" fill="#1a1433"/><rect x="152" y="42" width="40" height="36" fill="#1a1433"/><rect x="204" y="42" width="40" height="36" fill="#1a1433"/>
+  </g>
+  <text x="200" y="340" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="13" fill="#1a1433">Tu nombre aquí</text>
+</svg>

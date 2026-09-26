@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LlaveCorp — emblema para imprimir en 3D como llavero.
+  Rejilla de 12 unidades. A 45 mm de ancho, 1 unidad = 0.1875 mm, así que ninguna forma mide menos de 2.25 mm.
+  Capas (una por color de filamento):
+    capa-fondo    -> color base (indigo/negro). Es la pieza completa: extruir 3 a 4 mm.
+    capa-acento   -> mitad derecha (magenta/rojo). Extruir 0.6 a 1 mm sobre el fondo.
+    capa-relieve  -> llave y barras de señal (crema/blanco). Extruir 0.6 a 1 mm sobre lo anterior.
+    capa-argolla  -> marca del barreno para la argolla (extremo opuesto al chip). Es un hueco, no un relieve.
+  El chip NFC (etiqueta redonda de 25 mm) va en una cavidad por la parte trasera, centrada bajo la mitad derecha.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 96" width="45mm" height="18mm" shape-rendering="crispEdges">
+  <g id="capa-fondo" fill="#1a1433">
+    <rect x="0" y="0" width="240" height="96" rx="48"/>
+  </g>
+  <g id="capa-acento" fill="#ff2e88">
+    <path d="M120 0 H192 A48 48 0 0 1 192 96 H120 Z"/>
+  </g>
+  <g id="capa-relieve" fill="#fffaea">
+    <!-- llave pixel -->
+    <rect x="48" y="30" width="36" height="12"/>
+    <rect x="48" y="54" width="36" height="12"/>
+    <rect x="48" y="42" width="12" height="12"/>
+    <rect x="72" y="42" width="12" height="12"/>
+    <rect x="84" y="42" width="36" height="12"/>
+    <rect x="84" y="54" width="12" height="12"/>
+    <rect x="108" y="54" width="12" height="12"/>
+    <!-- barras de señal NFC -->
+    <rect x="144" y="42" width="12" height="12"/>
+    <rect x="168" y="30" width="12" height="36"/>
+    <rect x="192" y="18" width="12" height="60"/>
+  </g>
+  <g id="capa-argolla" fill="none" stroke="#ffd23f" stroke-width="2">
+    <circle cx="22" cy="48" r="7"/>
+  </g>
+</svg>

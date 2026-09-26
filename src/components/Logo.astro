@@ -1,0 +1,17 @@
+---
+// Logo inline: toma el SVG de public/logo y cambia los colores fijos por variables del tema,
+// así se ve bien en papel y en noche arcade. Los archivos de public/ quedan intactos para imprimir o compartir.
+import { readFileSync } from 'node:fs';
+
+interface Props { alto?: number; soloEmblema?: boolean }
+const { alto = 44, soloEmblema = false } = Astro.props;
+
+const archivo = new URL('../../public/logo/llavecorp.svg', import.meta.url);
+let svg = readFileSync(archivo, 'utf8')
+  .replace(/#1a1433/g, 'var(--tinta)')
+  .replace(/#fffaea/g, 'var(--fondo)')
+  .replace(/#ff2e88/g, 'var(--magenta)');
+if (soloEmblema) svg = svg.replace('viewBox="0 0 240 150"', 'viewBox="0 0 240 96"');
+const ancho = soloEmblema ? Math.round(alto * 240 / 96) : Math.round(alto * 240 / 150);
+---
+<span class="logo" style={`display:inline-block;height:${alto}px;width:${ancho}px`} set:html={svg} />
