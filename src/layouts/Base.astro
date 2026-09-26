@@ -1,0 +1,68 @@
+---
+import marca from '../config/marca.json';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/componentes.css';
+import '../styles/efectos.css';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+  imagenOg?: string;
+}
+const { titulo, descripcion, imagenOg = '/og/default.png' } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
+const ruta = Astro.url.pathname;
+const actual = (prefijo: string) => (ruta === prefijo || (prefijo !== '/' && ruta.startsWith(prefijo)) ? 'page' : undefined);
+---
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{titulo} · {marca.marca}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={url} />
+    <meta property="og:site_name" content={marca.marca} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:image" content={new URL(imagenOg, Astro.site)} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      // Aplica el tema guardado antes de pintar, para que no parpadee.
+      try { var t = localStorage.getItem('llavecorp-tema'); if (t) document.documentElement.dataset.tema = t; } catch (e) {}
+    </script>
+    {marca.analitica_token && (
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${marca.analitica_token}"}`}></script>
+    )}
+  </head>
+  <body>
+    <a class="visualmente-oculto" href="#contenido">Saltar al contenido</a>
+    <header class="contenedor cabecera">
+      <a class="cabecera__logo" href="/" aria-label={`${marca.marca}, inicio`}><slot name="logo" /></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="/#catalogo">Catálogo</a>
+        <a href="/donde" aria-current={actual('/donde')}>Dónde</a>
+        <a href="/activa" aria-current={actual('/activa')}>Activa tu llavero</a>
+      </nav>
+    </header>
+    <main id="contenido"><slot /></main>
+    <footer class="contenedor seccion pie">
+      <p class="pixel" style="font-size:.55rem">Hecho con nostalgia en {marca.ciudad}. Presiona START para pedir el tuyo.</p>
+      <div class="pie__fila">
+        <slot name="pie" />
+      </div>
+      {marca.tu_dia_url && <p><a href={marca.tu_dia_url}>¿Tienes boda o XV? Conoce Tu Día</a></p>}
+      <div class="pie__controles"><slot name="controles" /></div>
+    </footer>
+    <slot name="flotante" />
+  </body>
+</html>

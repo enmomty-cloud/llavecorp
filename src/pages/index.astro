@@ -1,7 +1,12 @@
 ---
+import Base from '../layouts/Base.astro';
 import marca from '../config/marca.json';
 ---
-<html lang="es-MX">
-  <head><meta charset="utf-8" /><title>{marca.marca}</title></head>
-  <body><h1>{marca.marca}</h1><p>{marca.lema}</p></body>
-</html>
+<Base titulo={marca.lema} descripcion="Llaveros impresos en 3D con chip NFC, estilo retro y anime. Pide por WhatsApp.">
+  <span slot="logo" class="pixel" style="font-size:.7rem">{marca.marca}</span>
+  <section class="contenedor seccion">
+    <h1>Elige tu llavero</h1>
+    <p>{marca.lema}</p>
+    <a class="btn btn--start parpadea" href="#catalogo">Presiona START</a>
+  </section>
+</Base>

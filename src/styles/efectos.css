@@ -1,0 +1,47 @@
+/* Scanlines de TV vieja, muy sutiles */
+.scanlines { position: relative; isolation: isolate; }
+.scanlines::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: repeating-linear-gradient(0deg, rgba(26, 20, 51, .07) 0 1px, transparent 1px 3px);
+}
+
+/* Trama de puntos de historieta */
+.halftone { background-image: radial-gradient(color-mix(in srgb, var(--tinta) 18%, transparent) 1.1px, transparent 1.3px); background-size: 9px 9px; }
+
+/* Líneas de velocidad de anime, desde el centro */
+.speedlines {
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 5deg, color-mix(in srgb, var(--tinta) 9%, transparent) 5deg 6deg),
+    var(--fondo);
+}
+
+/* Parpadeo tipo "PRESIONA START" */
+@keyframes parpadeo { 50% { opacity: .3; } }
+.parpadea { animation: parpadeo 1.1s steps(2, end) infinite; }
+
+/* ¡POWER UP! */
+@keyframes powerup { 0% { transform: scale(.5); opacity: 0; } 60% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
+.powerup { animation: powerup .5s steps(6) forwards; }
+
+/* Cápsula que gira */
+@keyframes girar { to { transform: rotate(360deg); } }
+.capsula--gira { animation: girar 6s linear infinite; }
+
+/* Celular que se acerca al llavero (sección NFC) */
+@keyframes acercar { 0%, 100% { transform: translateX(0); } 45%, 60% { transform: translateX(-28px); } }
+.nfc-demo__cel { animation: acercar 2.4s ease-in-out infinite; }
+@keyframes ondas { 0% { opacity: 0; transform: scale(.6); } 50% { opacity: 1; } 100% { opacity: 0; transform: scale(1.3); } }
+.nfc-demo__onda { animation: ondas 2.4s ease-out infinite; transform-origin: center; }
+
+/* Lluvia de corazones (easter egg) */
+@keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+.corazon-cae { position: fixed; top: -40px; z-index: 100; pointer-events: none; font-size: 1.5rem; animation: caer 3s linear forwards; }
+
+/* Modo VHS */
+@keyframes ruido { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }
+.vhs body::before {
+  content: ""; position: fixed; inset: 0; z-index: 99; pointer-events: none; opacity: .18;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.35) 0 2px, transparent 2px 6px);
+  animation: ruido .6s steps(4) infinite;
+}
+.vhs { filter: saturate(1.6) contrast(1.05); }
