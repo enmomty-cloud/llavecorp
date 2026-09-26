@@ -222,21 +222,5 @@
     "imagen": "",
     "destacado": false,
     "disponible": true
-  },
-  {
-    "slug": "capsula-sorpresa",
-    "nombre": "Cápsula sorpresa",
-    "saga": "capsula",
-    "descripcion": "Un llavero al azar de cualquier saga, en su cápsula.",
-    "tamano": "varía",
-    "precio_basico": 60,
-    "precio_nfc": 0,
-    "colores": 4,
-    "editable": false,
-    "texto_editable": false,
-    "colores_editables": false,
-    "imagen": "",
-    "destacado": true,
-    "disponible": true
   }
 ]

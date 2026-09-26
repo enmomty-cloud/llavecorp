@@ -6,7 +6,6 @@ import Precio from '../../components/Precio.astro';
 import Paleta from '../../components/Paleta.astro';
 import EtiquetaEditable from '../../components/EtiquetaEditable.astro';
 import BotonWhatsApp from '../../components/BotonWhatsApp.astro';
-import Capsula from '../../components/Capsula.astro';
 import { getProductos, getSaga } from '../../lib/catalogo';
 
 export function getStaticPaths() {
@@ -16,13 +15,12 @@ const { producto: p } = Astro.props;
 const saga = getSaga(p.saga)!;
 const img = p.imagen || `/img/placeholders/${p.saga}.svg`;
 const tipo = p.editable ? 'editable' : 'producto';
-const esCapsula = p.saga === 'capsula';
 ---
 <Base titulo={p.nombre} descripcion={`${p.descripcion} Desde $${p.precio_basico}.`} imagenOg={img}>
   <Marca slot="logo" />
   <section class="contenedor seccion ficha-prod">
     <div class="ficha-prod__img tarjeta__img">
-      {esCapsula && !p.imagen ? <Capsula tamano={220} abierta /> : <img src={img} alt={`Llavero ${p.nombre}`} width="400" height="400" />}
+      <img src={img} alt={`Llavero ${p.nombre}`} width="400" height="400" />
     </div>
     <div>
       <p class="seccion__sub" style="margin:0 0 .5rem"><a href={`/saga/${saga.slug}`}>{saga.nombre}</a></p>
@@ -43,7 +41,6 @@ const esCapsula = p.saga === 'capsula';
       ) : (
         <p style="margin-top:1rem">Se acabó por ahora. Escríbenos y te avisamos cuando vuelva.</p>
       )}
-      {esCapsula && <p style="margin-top:1rem">No sabes cuál te toca. Esa es la gracia.</p>}
     </div>
   </section>
 

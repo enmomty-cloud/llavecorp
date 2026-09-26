@@ -17,8 +17,7 @@ describe('mensaje', () => {
   it('diseño nuevo no lleva precio', () => {
     expect(mensaje('nuevo')).toBe('Hola, quiero cotizar un diseño nuevo. Idea: ___ · Tamaño aprox: ___ · Colores: ___');
   });
-  it('cápsula, avísame, instructivo, hola', () => {
-    expect(mensaje('capsula')).toBe('Hola, quiero una cápsula sorpresa.');
+  it('avísame, instructivo, hola', () => {
     expect(mensaje('avisame')).toBe('Hola, avísame cuando anden por ___');
     expect(mensaje('instructivo')).toBe('Hola, vi el instructivo de mi llavero y quiero...');
     expect(mensaje('hola')).toBe('Hola, vi LlaveCorp y tengo una duda.');
@@ -27,12 +26,12 @@ describe('mensaje', () => {
 
 describe('waLink', () => {
   it('usa wa.me con el número de config y texto codificado', () => {
-    const url = waLink('capsula');
+    const url = waLink('hola');
     expect(url.startsWith('https://wa.me/')).toBe(true);
     expect(url).toContain('?text=');
-    expect(decodeURIComponent(url.split('?text=')[1])).toBe('Hola, quiero una cápsula sorpresa.');
+    expect(decodeURIComponent(url.split('?text=')[1])).toBe('Hola, vi LlaveCorp y tengo una duda.');
   });
   it('quita todo lo que no sea dígito del número', () => {
-    expect(waLink('capsula', undefined, '+52 (81) 1234-5678')).toContain('https://wa.me/528112345678?');
+    expect(waLink('hola', undefined, '+52 (81) 1234-5678')).toContain('https://wa.me/528112345678?');
   });
 });

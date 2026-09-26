@@ -1,22 +1,28 @@
 ---
-// Ilustración de la tarjeta física de sellos: cinco casillas y la sexta marcada como gratis.
+// Tarjeta física de sellos: `total` casillas, con premio en `sellos` (llavero gratis) y en `total` (cápsula).
+interface Props { sellos?: number; total?: number }
+const { sellos = 5, total = 10 } = Astro.props;
+const casillas = Array.from({ length: total }, (_, i) => i + 1);
+const porFila = 5;
+const filas = Math.ceil(total / porFila);
+const alto = 44 + filas * 50 + 10;
 ---
-<svg viewBox="0 0 320 150" width="320" height="150" shape-rendering="crispEdges" role="img" aria-label="Tarjeta de coleccionista con cinco casillas para sellos y una sexta que dice gratis">
-  <rect x="2" y="2" width="316" height="146" rx="8" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="4" />
-  <rect x="2" y="2" width="316" height="34" rx="8" fill="var(--amarillo)" />
-  <rect x="2" y="26" width="316" height="10" fill="var(--amarillo)" />
-  <text x="16" y="25" font-family="'Press Start 2P', monospace" font-size="10" fill="var(--sobre-acento)">TARJETA DE COLECCIONISTA</text>
-  {[0, 1, 2, 3, 4].map(i => (
-    <g transform={`translate(${16 + i * 50} 56)`}>
-      <rect x="0" y="0" width="40" height="40" fill="var(--fondo)" stroke="var(--tinta)" stroke-width="3" />
-      {i < 2 && (
-        <g fill="var(--rojo)"><rect x="12" y="8" width="16" height="4" /><rect x="8" y="12" width="24" height="16" /><rect x="12" y="28" width="16" height="4" /></g>
-      )}
-    </g>
-  ))}
-  <g transform="translate(266 56)">
-    <rect x="0" y="0" width="40" height="40" fill="var(--verde-nfc)" stroke="var(--tinta)" stroke-width="3" />
-    <text x="20" y="25" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="7" fill="var(--sobre-acento)">GRATIS</text>
-  </g>
-  <text x="16" y="128" font-family="'Pixelify Sans', sans-serif" font-size="12" fill="var(--tinta-suave)">Junta 5 sellos, el 6.º llavero va por la casa.</text>
+<svg viewBox={`0 0 280 ${alto}`} width="280" height={alto} shape-rendering="crispEdges" role="img" aria-label={`Tarjeta de sellos con ${total} casillas: en la ${sellos} llavero gratis y en la ${total} cápsula sorpresa`}>
+  <rect x="2" y="2" width="276" height={alto - 4} rx="8" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="4" />
+  <rect x="2" y="2" width="276" height="34" rx="8" fill="var(--amarillo)" />
+  <rect x="2" y="26" width="276" height="10" fill="var(--amarillo)" />
+  <text x="14" y="25" font-family="'Press Start 2P', monospace" font-size="9" fill="var(--sobre-acento)">TARJETA DE SELLOS</text>
+  {casillas.map(n => {
+    const x = 16 + ((n - 1) % porFila) * 50;
+    const y = 48 + Math.floor((n - 1) / porFila) * 50;
+    const premio = n === sellos ? 'llavero' : n === total ? 'capsula' : null;
+    return (
+      <g transform={`translate(${x} ${y})`}>
+        <rect x="0" y="0" width="40" height="40" fill={premio === 'llavero' ? 'var(--verde-nfc)' : premio === 'capsula' ? 'var(--rojo)' : 'var(--fondo)'} stroke="var(--tinta)" stroke-width="3" />
+        {premio === 'llavero' && <text x="20" y="25" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="7" fill="var(--sobre-acento)">GRATIS</text>}
+        {premio === 'capsula' && <g><path d="M8 20 A12 12 0 0 1 32 20 Z" fill="var(--fondo)" /><path d="M8 20 A12 12 0 0 0 32 20 Z" fill="var(--tinta)" /><rect x="8" y="18" width="24" height="4" fill="var(--tinta)" /></g>}
+        {!premio && <text x="20" y="25" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="8" fill="var(--tinta-suave)">{n}</text>}
+      </g>
+    );
+  })}
 </svg>

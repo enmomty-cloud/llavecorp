@@ -20,11 +20,11 @@ import { getTianguisActivos } from '../lib/tianguis';
 import regalos from '../data/regalos.json';
 
 const fichas = destacados();
-const sagas = getSagas().filter(s => s.slug !== 'capsula');
+const sagas = getSagas();
 const desde = precioDesde();
 const puestos = getTianguisActivos();
 const redes = Object.entries(marca.redes).filter(([, url]) => url);
-const capsula = getProducto('capsula-sorpresa');
+const promo = marca.promocion;
 ---
 <Base titulo={marca.lema} descripcion={`Llaveros impresos en 3D con chip NFC, estilo retro y anime, desde $${desde}. Pide por WhatsApp o búscanos en el tianguis.`}>
   <Marca slot="logo" />
@@ -79,24 +79,6 @@ const capsula = getProducto('capsula-sorpresa');
     ))}
   </Seccion>
 
-  {capsula && (
-    <Seccion id="capsula" titulo="Cápsula sorpresa" subtitulo="No sabes cuál te toca. Esa es la gracia.">
-      <Emote slot="emote" tipo="brillo" />
-      <div class="capsula-sec ventana">
-        <div class="ventana__cuerpo capsula-sec__cuerpo">
-          <Capsula tamano={150} />
-          <div>
-            <p>Un llavero al azar de cualquier saga, en su cápsula. Ideal para regalar sin pensarle o para coleccionar sin repetir.</p>
-            <p class="precio"><span>${capsula.precio_basico}</span></p>
-            <div class="acciones">
-              <BotonWhatsApp tipo="capsula" texto="Quiero una cápsula" />
-              <a class="btn btn--fantasma" href="/llavero/capsula-sorpresa">Ver detalle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Seccion>
-  )}
 
   <Seccion id="hazlo-tuyo" titulo="Hazlo tuyo" subtitulo="Tres formas de personalizar, sin letra chiquita." fondo="halftone">
     <Emote slot="emote" tipo="sorpresa" />
@@ -152,15 +134,26 @@ const capsula = getProducto('capsula-sorpresa');
     </div>
   </Seccion>
 
-  <Seccion id="coleccionista" titulo="Tarjeta de coleccionista" subtitulo="Junta cinco sellos y el sexto llavero es gratis.">
-    <div class="colec">
-      <TarjetaColeccionista />
-      <div>
-        <p>La tarjeta te la doy en el puesto con tu primera compra. Cada llavero es un sello, no importa el diseño ni el precio. Al quinto sello, el siguiente va por la casa.</p>
-        <p><small>Un sello por llavero. La tarjeta no caduca; si la pierdes, empezamos otra.</small></p>
+  {promo.activa && (
+    <Seccion id="promo" titulo={promo.titulo} subtitulo={`Cada pedido desde esta página suma un sello: al ${promo.sellos_llavero}° te llevas un llavero con tu nombre gratis, y al ${promo.sellos_capsula}° abres la cápsula.`} fondo="halftone">
+      <Emote slot="emote" tipo="brillo" />
+      <div class="promo">
+        <Ventana titulo={`Sello ${promo.sellos_llavero}: llavero con tu nombre`} tono="verde">
+          <div class="promo__nivel">
+            <TarjetaColeccionista sellos={promo.sellos_llavero} total={promo.sellos_capsula} />
+          </div>
+          <p>En tu pedido número {promo.sellos_llavero} te llevas gratis un llavero de la <a href="/saga/nombre">Saga Con Nombre</a>, básico, con el nombre que tú digas.</p>
+        </Ventana>
+        <Ventana titulo={`Sello ${promo.sellos_capsula}: abre la cápsula`} tono="rojo">
+          <div class="promo__nivel">
+            <Capsula tamano={110} abierta gira={false} />
+            <p>En tu compra número {promo.sellos_capsula} abres la cápsula sorpresa y te llevas un modelo al azar, gratis. No sabes cuál te toca. Esa es la gracia.</p>
+          </div>
+        </Ventana>
+        <p class="promo__nota">{promo.nota}</p>
       </div>
-    </div>
-  </Seccion>
+    </Seccion>
+  )}
 
 
 
@@ -199,11 +192,12 @@ const capsula = getProducto('capsula-sorpresa');
   .lista-poder { padding-left: 1.1rem; margin: 0 0 1rem; }
   .lista-poder li { margin-bottom: .5rem; }
   .saga + .saga { margin-top: 2.5rem; }
-  .capsula-sec__cuerpo { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
-  @media (min-width: 700px) { .capsula-sec__cuerpo { grid-template-columns: auto 1fr; text-align: left; justify-items: start; align-items: center; } }
   .regalo-lista { padding-left: 1.1rem; margin: 0; }
-  .colec { display: grid; gap: 1.25rem; align-items: center; }
-  @media (min-width: 760px) { .colec { grid-template-columns: auto 1fr; } }
+  .promo { display: grid; gap: 1.25rem; }
+  @media (min-width: 760px) { .promo { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .promo__nivel { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
+  .promo__num { font-family: var(--fuente-pixel); font-size: 1.4rem; color: var(--rojo); }
+  .promo__nota { grid-column: 1 / -1; color: var(--tinta-suave); font-size: .9rem; }
   .hero__aviso { margin-top: .75rem; font-size: .9rem; color: var(--tinta-suave); }
 </style>
 <script src="../scripts/start.ts"></script>

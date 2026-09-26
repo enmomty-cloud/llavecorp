@@ -29,9 +29,9 @@ describe.skipIf(!hayDist)('dist generado', () => {
     expect(existsSync('dist/llavero/gato-suerte/index.html')).toBe(true);
   });
 
-  it('la cápsula sorpresa no ofrece botón Con NFC', () => {
-    const html = leer('llavero/capsula-sorpresa/index.html');
-    expect(html).not.toContain('>Con NFC<');
+  it('la cápsula ya no es producto', () => {
+    expect(existsSync('dist/llavero/capsula-sorpresa/index.html')).toBe(false);
+    expect(existsSync('dist/saga/capsula/index.html')).toBe(false);
   });
 
   it('todo botón de WhatsApp apunta a wa.me', () => {
@@ -59,12 +59,15 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
 });
 
 describe.skipIf(!hayDist)('etapa 3: conversión', () => {
-  it('inicio tiene cápsula, regalos y coleccionista, sin taller ni mayoreo', () => {
+  it('inicio tiene la promoción y regalos, sin taller ni mayoreo ni cápsula a la venta', () => {
     const html = leer('index.html');
-    for (const id of ['capsula', 'regalos', 'coleccionista']) expect(html).toContain(`id="${id}"`);
-    expect(html).not.toContain('id="vende"');
-    expect(html).not.toContain('id="taller"');
-    expect(html).toContain('Quiero una cápsula');
+    for (const id of ['promo', 'regalos']) expect(html).toContain(`id="${id}"`);
+    for (const id of ['vende', 'taller', 'capsula', 'coleccionista']) expect(html).not.toContain(`id="${id}"`);
+    expect(html).toContain('Sello 5: llavero con tu nombre');
+    expect(html).toContain('pedidos hechos desde esta página');
+    expect(html).toContain('Sello 10: abre la cápsula');
+    expect(html).toContain('sin previo aviso');
+    expect(html).not.toContain('Quiero una cápsula');
   });
   it('existe /donde y ya no existe /mayoreo', () => {
     expect(existsSync('dist/donde/index.html')).toBe(true);

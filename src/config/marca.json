@@ -6,17 +6,52 @@
   "mascota": "Llavi",
   "ciudad": "Monterrey",
   "precio_minimo": 60,
-  "redes": { "instagram": "", "tiktok": "", "facebook": "" },
+  "redes": {
+    "instagram": "",
+    "tiktok": "",
+    "facebook": ""
+  },
   "tu_dia_url": "",
   "analitica_token": "",
   "colores_disponibles": [
-    { "nombre": "Negro", "hex": "#111111" },
-    { "nombre": "Blanco", "hex": "#f4f4f4" },
-    { "nombre": "Rojo", "hex": "#e23b3b" },
-    { "nombre": "Azul", "hex": "#2f6fe4" },
-    { "nombre": "Amarillo", "hex": "#f4d03f" },
-    { "nombre": "Verde", "hex": "#3ec26b" },
-    { "nombre": "Rosa", "hex": "#ff6fb1" },
-    { "nombre": "Morado", "hex": "#8e5bd6" }
-  ]
+    {
+      "nombre": "Negro",
+      "hex": "#111111"
+    },
+    {
+      "nombre": "Blanco",
+      "hex": "#f4f4f4"
+    },
+    {
+      "nombre": "Rojo",
+      "hex": "#e23b3b"
+    },
+    {
+      "nombre": "Azul",
+      "hex": "#2f6fe4"
+    },
+    {
+      "nombre": "Amarillo",
+      "hex": "#f4d03f"
+    },
+    {
+      "nombre": "Verde",
+      "hex": "#3ec26b"
+    },
+    {
+      "nombre": "Rosa",
+      "hex": "#ff6fb1"
+    },
+    {
+      "nombre": "Morado",
+      "hex": "#8e5bd6"
+    }
+  ],
+  "promocion": {
+    "activa": true,
+    "titulo": "Promoción de lanzamiento",
+    "sellos_llavero": 5,
+    "sellos_capsula": 10,
+    "nota": "Promoción de introducción. Cuentan solo los pedidos hechos desde esta página por WhatsApp; llevo la cuenta con tu número. Puede terminar en cualquier momento sin previo aviso."
+  }
 }

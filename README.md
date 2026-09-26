@@ -2,7 +2,7 @@
 
 Sitio estático de LlaveCorp: llaveros impresos en 3D, con y sin chip NFC, estilo "Canal de las 4" (retro pixel + anime de las tardes). Pedidos por WhatsApp, sin carrito ni base de datos.
 
-- **Tienda:** `/` (catálogo por sagas, cápsula sorpresa, personalización, dónde estamos, regalos, coleccionista)
+- **Tienda:** `/` (catálogo por sagas, personalización, promoción de lanzamiento, dónde estamos, regalos)
 - **Instructivo NFC:** `/activa` (a donde apunta el chip y el QR de cada llavero)
 - **Otras páginas:** `/saga/{slug}`, `/llavero/{slug}`, `/activa/{slug}`, `/donde`
 
@@ -38,6 +38,7 @@ Si el build falla con "Catálogo inválido", el mensaje dice qué producto y qu�
 | `tu_dia_url` | Enlace a Tu Día para el pie. Vacío = no aparece. |
 | `analitica_token` | Token de Cloudflare Web Analytics. Vacío = sin analítica. |
 | `mascota`, `ciudad`, `lema` | Textos que aparecen en varias partes. |
+| `promocion` | La promo de sellos. `activa: false` quita la sección entera; `sellos_llavero` y `sellos_capsula` son los números de compra con premio; `nota` es la letra chica. |
 
 ## Cómo agregar cosas (solo editas JSON y vuelves a construir)
 
