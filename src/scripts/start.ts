@@ -1,25 +1,9 @@
 // PRESIONA START en la portada: arranca la víbora (come cápsulas, no choques). Al perder sale GAME OVER
-// y de ahí se baja al catálogo con un llavero elegido al azar. Con prefers-reduced-motion solo baja al catálogo.
+// y de ahí se baja al inicio del catálogo. Con prefers-reduced-motion solo baja al catálogo.
 const reducido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 type Dir = 'up' | 'down' | 'left' | 'right';
 const OPUESTA: Record<Dir, Dir> = { up: 'down', down: 'up', left: 'right', right: 'left' };
 const N = 16; // celdas por lado
-
-function seleccionarAlAzar() {
-  const tarjetas = [...document.querySelectorAll<HTMLElement>('#catalogo .tarjeta[data-slug]')].filter(t => !t.classList.contains('tarjeta--agotado'));
-  if (!tarjetas.length) return;
-  document.querySelectorAll('.tarjeta--seleccionada').forEach(t => t.classList.remove('tarjeta--seleccionada'));
-  const elegida = tarjetas[Math.floor(Math.random() * tarjetas.length)];
-  elegida.classList.add('tarjeta--seleccionada');
-  elegida.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  const aviso = document.getElementById('start-aviso');
-  if (aviso) {
-    aviso.textContent = `Selección al azar: ${elegida.dataset.nombre ?? 'un llavero'}. Presiona START otra vez para cambiar.`;
-    aviso.hidden = false;
-  }
-  document.dispatchEvent(new CustomEvent('llavecorp:powerup', { detail: { slug: elegida.dataset.slug } }));
-  setTimeout(() => elegida.classList.remove('tarjeta--seleccionada'), 6000);
-}
 
 class Vibora {
   private ctx: CanvasRenderingContext2D;
@@ -99,7 +83,7 @@ function iniciar() {
   const ayuda = pantalla.querySelector<HTMLElement>('[data-snake-ayuda]')!;
 
   const cerrar = () => { juego.parar(); pantalla.hidden = true; document.body.style.overflow = ''; };
-  const continuar = () => { cerrar(); destino.scrollIntoView({ behavior: 'auto', block: 'start' }); seleccionarAlAzar(); };
+  const continuar = () => { cerrar(); destino.scrollIntoView({ behavior: 'auto', block: 'start' }); };
 
   const juego = new Vibora(canvas, puntos => {
     fin.hidden = false;
@@ -121,7 +105,7 @@ function iniciar() {
 
   boton.addEventListener('click', e => {
     e.preventDefault();
-    if (reducido()) { destino.scrollIntoView(); seleccionarAlAzar(); return; }
+    if (reducido()) { destino.scrollIntoView(); return; }
     abrir();
   });
 

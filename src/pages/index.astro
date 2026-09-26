@@ -38,7 +38,6 @@ const promo = marca.promocion;
         <p class="hero__lema">Impresos en 3D aquí en {marca.ciudad}. Con chip NFC si quieres que hagan algo más que colgar.</p>
         <p class="pixel hero__desde">Desde ${desde}</p>
         <BotonStart href="#catalogo" />
-        <p id="start-aviso" class="hero__aviso" role="status" hidden></p>
       </div>
       <div class="hero__logo"><Logo alto={150} /></div>
     </div>
@@ -81,27 +80,6 @@ const promo = marca.promocion;
   </Seccion>
 
 
-  <Seccion id="hazlo-tuyo" titulo="Hazlo tuyo" subtitulo="Tres formas de personalizar, sin letra chiquita." fondo="halftone">
-    <Emote slot="emote" tipo="sorpresa" />
-    <div class="grid grid--ancho">
-      <Ventana titulo="Editable">
-        <p>Los diseños con la etiqueta <span class="etiqueta etiqueta--editable">Editable</span> se pueden adaptar: tu nombre o texto, y cambio de colores.</p>
-        <p>Me escribes por WhatsApp con el diseño, el nombre y los colores que quieres. Yo lo edito y te mando una foto de cómo queda antes de imprimirlo.</p>
-      </Ventana>
-      <Ventana titulo="Colores" tono="amarillo">
-        <p>Cada llavero se imprime con máximo cuatro colores. Cada diseño ya trae su número de colores, y ese número no cambia: puedes elegir cuáles, no cuántos.</p>
-        <p>Un diseño de dos colores sigue siendo de dos colores, solo que con los que tú escojas. Estos son los que tengo:</p>
-        <Paleta />
-      </Ventana>
-      <Ventana titulo="Diseño nuevo" tono="rojo">
-        <p>Si quieres algo que no está en el catálogo, se cotiza aparte. El precio depende del tamaño y del número de colores.</p>
-        <p>Mándame la idea o una referencia por WhatsApp y te digo cuánto y cuándo.</p>
-        <BotonWhatsApp tipo="nuevo" texto="Cotizar diseño nuevo" />
-      </Ventana>
-    </div>
-  </Seccion>
-
-
   <Seccion id="eventos" titulo="Bodas y XV" subtitulo="Recuerdos que no se quedan en el cajón: llaveros con los nombres, la fecha y los colores de tu fiesta.">
     <Emote slot="emote" tipo="brillo" />
     <div class="grid grid--ancho">
@@ -125,6 +103,28 @@ const promo = marca.promocion;
       </Ventana>
     </div>
   </Seccion>
+
+  <Seccion id="hazlo-tuyo" titulo="Hazlo tuyo" subtitulo="Tres formas de personalizar, sin letra chiquita." fondo="halftone">
+    <Emote slot="emote" tipo="sorpresa" />
+    <div class="grid grid--ancho">
+      <Ventana titulo="Editable">
+        <p>Los diseños con la etiqueta <span class="etiqueta etiqueta--editable">Editable</span> se pueden adaptar: tu nombre o texto, y cambio de colores.</p>
+        <p>Me escribes por WhatsApp con el diseño, el nombre y los colores que quieres. Yo lo edito y te mando una foto de cómo queda antes de imprimirlo.</p>
+      </Ventana>
+      <Ventana titulo="Colores" tono="amarillo">
+        <p>Cada llavero se imprime con máximo cuatro colores. Cada diseño ya trae su número de colores, y ese número no cambia: puedes elegir cuáles, no cuántos.</p>
+        <p>Un diseño de dos colores sigue siendo de dos colores, solo que con los que tú escojas. Estos son los que tengo:</p>
+        <Paleta />
+      </Ventana>
+      <Ventana titulo="Diseño nuevo" tono="rojo">
+        <p>Si quieres algo que no está en el catálogo, se cotiza aparte. El precio depende del tamaño y del número de colores.</p>
+        <p>Mándame la idea o una referencia por WhatsApp y te digo cuánto y cuándo.</p>
+        <BotonWhatsApp tipo="nuevo" texto="Cotizar diseño nuevo" />
+      </Ventana>
+    </div>
+  </Seccion>
+
+
 
   <Seccion id="donde" titulo="¿Dónde estamos esta semana?" subtitulo="Ven al puesto, tócalos y llévatelo en la mano.">
     <Emote slot="emote" tipo="gota" />

@@ -25,8 +25,9 @@ describe.skipIf(!hayDist)('dist generado', () => {
   });
 
   it('existen páginas de saga y de producto', () => {
-    expect(existsSync('dist/saga/anime/index.html')).toBe(true);
-    expect(existsSync('dist/llavero/gato-suerte/index.html')).toBe(true);
+    expect(existsSync('dist/saga/retro/index.html')).toBe(true);
+    expect(existsSync('dist/llavero/casete/index.html')).toBe(true);
+    expect(existsSync('dist/saga/anime/index.html')).toBe(false);
   });
 
   it('la cápsula ya no es producto', () => {
@@ -61,6 +62,8 @@ describe.skipIf(!hayDist)('instructivo /activa', () => {
 describe.skipIf(!hayDist)('etapa 3: conversión', () => {
   it('inicio tiene la promoción y regalos, sin taller ni mayoreo ni cápsula a la venta', () => {
     const html = leer('index.html');
+    expect(html.indexOf('id="eventos"')).toBeGreaterThan(html.indexOf('id="catalogo"'));
+    expect(html.indexOf('id="eventos"')).toBeLessThan(html.indexOf('id="hazlo-tuyo"'));
     for (const id of ['promo', 'regalos', 'entregas', 'eventos']) expect(html).toContain(`id="${id}"`);
     expect(html).toContain('Cotizar mi evento');
     expect(html).toContain('Soriana Colosio');
@@ -95,7 +98,7 @@ describe.skipIf(!hayDist)('cartuchos, START y botín', () => {
     expect(html).toContain('id="pantalla-start"');
     expect(html).toContain('data-snake');
     expect(html).toContain('GAME OVER');
-    expect((html.match(/data-slug="/g) ?? []).length).toBeGreaterThan(10);
+    expect((html.match(/data-slug="/g) ?? []).length).toBeGreaterThanOrEqual(8);
   });
 });
 
